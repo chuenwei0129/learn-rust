@@ -3,12 +3,16 @@ import React, { ComponentProps, FC } from 'react';
 
 type ContainerProps = {
   title?: string;
+  /**
+   * 按钮失效状态
+   * @default false
+   */
   center?: boolean;
   dark?: boolean;
   rounded?: boolean;
-} & ComponentProps<'div'>;
+};
 
-const Container: FC<ContainerProps> = (props) => {
+const Container: FC<ContainerProps & ComponentProps<'div'>> = (props) => {
   const { children, center, rounded, dark, title, className, ...rest } = props;
 
   return (

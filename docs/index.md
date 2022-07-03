@@ -1,10 +1,10 @@
 ---
-title: nes-react - 基于 React 和 TypeScript 实现的 UI 组件库
+title: nes-react
 hero:
   title: nes-react
-  desc: 🏆 个人开源项目，使用 React + TypeScript 打造自己的 UI 组件库
+  desc: 🏆 nes-react is a react component that is using NES.css.
   actions:
-    - text: 开始使用
+    - text: Getting Started
       link: /components
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png

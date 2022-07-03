@@ -1,6 +1,12 @@
 @font-face {
   font-family: 'Press Start 2P';
-  src: url(./Fonts/PressStart2P.ttf);
+  src: url(./assets/PressStart2P.ttf);
+}
+
+@font-face {
+  font-size: 16px;
+  font-family: 'Zpix';
+  src: url(./assets/Zpix.ttf);
 }
 
 * {

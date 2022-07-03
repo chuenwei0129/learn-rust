@@ -1,22 +1,13 @@
 import classNames from 'classnames';
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC } from 'react';
-
-type ButtonType = 'primary' | 'success' | 'warning' | 'error' | 'link';
-type ButtonSize = 'lg' | 'sm';
-
-type ButtonProps = {
-  disabled?: boolean;
-  size?: ButtonSize;
-  type?: ButtonType;
-  htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> &
-  AnchorHTMLAttributes<HTMLAnchorElement>;
+import React, { FC } from 'react';
+import './index.css';
+import { ButtonProps } from './type';
 
 const Button: FC<ButtonProps> = (props) => {
   const {
-    type,
+    type = 'default',
     disabled,
-    size,
+    size = 'md',
     children,
     href = '#',
     htmlType = 'button',
@@ -26,9 +17,9 @@ const Button: FC<ButtonProps> = (props) => {
 
   // 用户自定义 className
   const classes = classNames('nes-btn', className, {
-    [`is-${type}`]: type && (!disabled || type !== 'link'),
+    [`is-${type}`]: type && type !== 'default' && type !== 'link' && !disabled,
     'is-disabled': disabled,
-    // [`is-${size}`]: size
+    [`is-${size}`]: size && size !== 'md',
   });
 
   if (type === 'link') {

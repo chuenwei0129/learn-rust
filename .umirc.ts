@@ -2,13 +2,14 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
   title: 'nes-react',
-  locales: [
-    ['zh-CN', '中文'],
-    ['en-US', 'English'],
-  ],
-  favicon:
-    'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
-  logo: 'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
+  apiParser: {
+    propFilter: {
+      // 是否忽略从 node_modules 继承的属性，默认值为 false
+      skipNodeModules: true,
+    },
+  },
+  favicon: 'https://nostalgic-css.github.io/NES.css/favicon.png',
+  logo: 'https://nostalgic-css.github.io/NES.css/favicon.png',
   outputPath: 'docs-dist',
   mode: 'site',
   // more config: https://d.umijs.org/config
