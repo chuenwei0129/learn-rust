@@ -1,20 +1,16 @@
 import classNames from 'classnames';
-import React, { ComponentProps, FC } from 'react';
+import React, { FC } from 'react';
+import { ContainerProps } from './type';
 
-type ContainerProps = {
-  title?: string;
-  /**
-   * 按钮失效状态
-   * @default false
-   */
-  center?: boolean;
-  dark?: boolean;
-  rounded?: boolean;
-};
-
-const Container: FC<ContainerProps & ComponentProps<'div'>> = (props) => {
-  const { children, center, rounded, dark, title, className, ...rest } = props;
-
+const Container: FC<ContainerProps> = ({
+  children,
+  center,
+  rounded,
+  dark,
+  title,
+  className,
+  ...rest
+}) => {
   return (
     <div
       className={classNames('nes-container', className, {

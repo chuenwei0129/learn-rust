@@ -1,9 +1,6 @@
 import classNames from 'classnames';
-import React, { ComponentProps, FC } from 'react';
-
-type TextProps = {
-  type?: 'primary' | 'success' | 'warning' | 'error' | 'disabled';
-} & ComponentProps<'span'>;
+import React, { FC } from 'react';
+import { TextProps } from './type';
 
 const Text: FC<TextProps> = ({ type, className, children, ...rest }) => {
   return (

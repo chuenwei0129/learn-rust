@@ -11,7 +11,7 @@ nav:
 
 按钮分为六种类型 `type`，默认是 `default`。
 
-<code src="./demos/type.tsx" />
+<code src="./demo/type.tsx" />
 
 ## 按钮尺寸
 
@@ -19,13 +19,13 @@ nav:
 
 `lg` | `md` | `sm`
 
-<code src="./demos/size.tsx" />
+<code src="./demo/size.tsx" />
 
 ## 不可用状态
 
 添加 `disabled` 属性即可让按钮处于不可用状态，同时按钮样式也会改变。
 
-<code src="./demos/disable.tsx" />
+<code src="./demo/disable.tsx" />
 
 <API></API>
 
