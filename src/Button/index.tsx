@@ -3,18 +3,16 @@ import React, { FC } from 'react';
 import './index.css';
 import { ButtonProps } from './type';
 
-const Button: FC<ButtonProps> = (props) => {
-  const {
-    type = 'default',
-    disabled,
-    size = 'md',
-    children,
-    href = '#',
-    htmlType = 'button',
-    className,
-    ...rest
-  } = props;
-
+const Button: FC<ButtonProps> = ({
+  type,
+  disabled,
+  size,
+  children,
+  href,
+  htmlType,
+  className,
+  ...rest
+}) => {
   // 用户自定义 className
   const classes = classNames('nes-btn', className, {
     [`is-${type}`]: type && type !== 'default' && type !== 'link' && !disabled,
@@ -35,6 +33,13 @@ const Button: FC<ButtonProps> = (props) => {
       </button>
     );
   }
+};
+
+Button.defaultProps = {
+  size: 'md',
+  type: 'default',
+  htmlType: 'button',
+  href: '#',
 };
 
 export default Button;
