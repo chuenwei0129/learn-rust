@@ -8,7 +8,7 @@ export type CommonCounterProps = {
   iconDecrement: 'minus' | 'circle-minus' | 'square-minus';
   iconIncrement: 'plus' | 'circle-plus' | 'square-plus';
   max?: number;
-  onChange: (count: number) => void;
+  onChange?: (value: number) => void;
 };
 
 export const CommonCounter: FC<CommonCounterProps> = ({

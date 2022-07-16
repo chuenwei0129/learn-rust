@@ -1,4 +1,4 @@
-import { CommonCounter } from 'nes-react';
+import { CompoundCounter } from 'nes-react';
 import React from 'react';
 
 export default () => {
@@ -7,13 +7,11 @@ export default () => {
   };
 
   return (
-    <CommonCounter
-      max={10}
-      initialValue={11}
-      label={'计数器'}
-      iconDecrement={'minus'}
-      iconIncrement={'plus'}
-      onChange={handleChangeCounter}
-    />
+    <CompoundCounter onChange={handleChangeCounter} initialValue={9}>
+      <CompoundCounter.Decrement icon="minus" />
+      <CompoundCounter.Label>计数器</CompoundCounter.Label>
+      <CompoundCounter.Count max={10} />
+      <CompoundCounter.Increment icon="plus" />
+    </CompoundCounter>
   );
 };
