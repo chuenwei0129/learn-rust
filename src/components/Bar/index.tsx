@@ -1,16 +1,3 @@
----
-title: Barx
-group:
-  title: B
-  path: /b
-nav:
-  title: '所有组件'
-  path: /components
----
-
-## demo
-
-```tsx
 import React from 'react';
 
 export interface IHelloProps {
@@ -24,6 +11,3 @@ export interface IHelloProps {
 const Hello: React.FC<IHelloProps> = () => <>Hello World!</>;
 
 export default Hello;
-```
-
-<API></API>
