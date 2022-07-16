@@ -10,6 +10,8 @@ export const Count = ({ max }: { max?: number }) => {
   return <StyledCount hasError={hasError}>{count}</StyledCount>;
 };
 
+Count.displayName = 'Count';
+
 const StyledCount = styled.div<{ hasError: boolean }>`
   background-color: ${({ hasError }) => (hasError ? '#bd2130' : '#17a2b8')};
   color: white;

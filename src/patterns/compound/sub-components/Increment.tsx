@@ -11,3 +11,5 @@ export const Increment = ({ icon = 'plus' }: { icon: 'plus' | 'circle-plus' | 's
     </StyledButton>
   );
 };
+
+Increment.displayName = 'Increment';

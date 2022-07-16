@@ -15,3 +15,5 @@ export const Decrement = ({
     </StyledButton>
   );
 };
+
+Decrement.displayName = 'Decrement';

@@ -9,6 +9,7 @@ export default () => {
   return (
     <CompoundCounter onChange={handleChangeCounter} initialValue={9}>
       <CompoundCounter.Decrement icon="minus" />
+      <h1>hello world</h1>
       <CompoundCounter.Label>计数器</CompoundCounter.Label>
       <CompoundCounter.Count max={10} />
       <CompoundCounter.Increment icon="plus" />

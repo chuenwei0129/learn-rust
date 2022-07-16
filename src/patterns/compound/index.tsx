@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, FunctionComponentElement, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Count } from './sub-components/Count';
 import { Decrement } from './sub-components/Decrement';
@@ -39,9 +39,25 @@ const CompoundCounter = ({ initialValue = 0, onChange, children }: CompoundCount
     setCount(Math.max(0, count - 1));
   };
 
+  const renderChildren = () => {
+    return React.Children.map(children, (child) => {
+      const childElement = child as FunctionComponentElement<unknown>;
+      if (
+        childElement.type.displayName === 'Increment' ||
+        childElement.type.displayName === 'Decrement' ||
+        childElement.type.displayName === 'Label' ||
+        childElement.type.displayName === 'Count'
+      ) {
+        return childElement;
+      } else {
+        console.warn(`type: ${childElement.type} 被限制输入，已过滤`);
+      }
+    });
+  };
+
   return (
     <CompoundCounterContext.Provider value={{ count, handleDecrement, handleIncrement }}>
-      <StyledCounter>{children}</StyledCounter>
+      <StyledCounter>{renderChildren()}</StyledCounter>
     </CompoundCounterContext.Provider>
   );
 };
