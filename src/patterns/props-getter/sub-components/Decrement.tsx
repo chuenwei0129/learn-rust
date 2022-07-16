@@ -2,13 +2,13 @@ import React, { ButtonHTMLAttributes } from 'react';
 import Icon from '../../../components/Icon';
 import { StyledButton } from './StyledButton';
 
-export const Increment = ({
-  icon = 'plus',
+export const Decrement = ({
+  icon = 'minus',
   onClick,
   ...rest
 }: {
-  icon: 'plus' | 'circle-plus' | 'square-plus';
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  icon: 'minus' | 'circle-minus' | 'square-minus';
+  onClick?: () => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <StyledButton onClick={onClick} {...rest}>
@@ -17,4 +17,4 @@ export const Increment = ({
   );
 };
 
-Increment.displayName = 'Increment';
+Decrement.displayName = 'Decrement';

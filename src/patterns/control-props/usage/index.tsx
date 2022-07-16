@@ -12,7 +12,7 @@ export default () => {
     <ControlCounter value={count} onChange={handleChangeCounter}>
       <ControlCounter.Decrement icon="minus" />
       <ControlCounter.Label>计数器</ControlCounter.Label>
-      <ControlCounter.Count max={10} />
+      <ControlCounter.Count limit={10} />
       <ControlCounter.Increment icon="plus" />
     </ControlCounter>
   );

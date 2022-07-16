@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <CommonCounter
-      max={10}
+      limit={10}
       initialValue={11}
       label={'计数器'}
       iconDecrement={'minus'}

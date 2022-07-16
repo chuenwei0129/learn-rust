@@ -8,7 +8,7 @@ export const Increment = ({
   ...rest
 }: {
   icon: 'plus' | 'circle-plus' | 'square-plus';
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: () => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <StyledButton onClick={onClick} {...rest}>

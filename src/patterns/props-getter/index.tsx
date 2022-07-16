@@ -6,13 +6,15 @@ import { Decrement } from './sub-components/Decrement';
 import { Increment } from './sub-components/Increment';
 import { Label } from './sub-components/Label';
 
-type CustomHookCounterProps = {
+type PropsGetterCounterProps = {
   value: number;
   onChange?: (value: number) => void;
   children: React.ReactNode;
 };
 
-const CustomHookCounter = ({ value: count, onChange, children }: CustomHookCounterProps) => {
+const PropsGetterCounter = (props: PropsGetterCounterProps) => {
+  // 内部对接收的 props 做了限制
+  const { value: count, onChange, children } = props;
   const firstMounded = useRef(true);
 
   useEffect(() => {
@@ -53,10 +55,10 @@ const StyledCounter = styled.div`
   overflow: hidden;
 `;
 
-CustomHookCounter.Count = Count;
-CustomHookCounter.Label = Label;
-CustomHookCounter.Increment = Increment;
-CustomHookCounter.Decrement = Decrement;
+PropsGetterCounter.Count = Count;
+PropsGetterCounter.Label = Label;
+PropsGetterCounter.Increment = Increment;
+PropsGetterCounter.Decrement = Decrement;
 
 export { useCounter } from './useCounter';
-export { CustomHookCounter };
+export { PropsGetterCounter };

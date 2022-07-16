@@ -7,7 +7,7 @@ export type CommonCounterProps = {
   label: string;
   iconDecrement: 'minus' | 'circle-minus' | 'square-minus';
   iconIncrement: 'plus' | 'circle-plus' | 'square-plus';
-  max?: number;
+  limit?: number;
   onChange?: (value: number) => void;
 };
 
@@ -16,12 +16,12 @@ export const CommonCounter: FC<CommonCounterProps> = ({
   label,
   iconDecrement,
   iconIncrement,
-  max,
+  limit,
   onChange,
 }) => {
   const [count, setCount] = React.useState(initialValue);
 
-  const hasError = max ? count >= max : false;
+  const hasError = limit ? count >= limit : false;
 
   const handleIncrement = () => {
     setCount(count + 1);

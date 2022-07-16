@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { CounterContext } from '..';
 
-export const Count = ({ max }: { max?: number }) => {
+export const Count = ({ limit }: { limit?: number }) => {
   const { count } = React.useContext(CounterContext);
 
-  const hasError = max ? count >= max : false;
+  const hasError = limit ? count >= limit : false;
 
   return <StyledCount hasError={hasError}>{count}</StyledCount>;
 };

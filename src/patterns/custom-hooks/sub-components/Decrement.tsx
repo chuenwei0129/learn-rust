@@ -8,7 +8,7 @@ export const Decrement = ({
   ...rest
 }: {
   icon: 'minus' | 'circle-minus' | 'square-minus';
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <StyledButton onClick={onClick} {...rest}>
