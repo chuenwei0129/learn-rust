@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #0c8ee0;
+  --success-color: #92cc42;
+  --warning-color: #f8d61e;
+  --error-color: #e76e55;
+}
+
+.icon-primary {
+  color: var(--primary-color);
+}
+
+.icon-success {
+  color: var(--success-color);
+}
+
+.icon-warning {
+  color: var(--warning-color);
+}
+
+.icon-error {
+  color: var(--error-color);
+}

@@ -3,12 +3,14 @@ title: Common
 group:
   title: Common
 nav:
-  title: '组件设计'
+  title: '组件模式'
   path: /patterns
 ---
 
-## demo
+## Common
 
-<code src="./demo/Usage.tsx" />
+Usage:
+
+<code src="./usage/index.tsx" />
 
 <API></API>

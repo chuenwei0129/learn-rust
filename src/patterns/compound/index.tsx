@@ -1,8 +1,22 @@
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faMinus,
+  faMinusCircle,
+  faMinusSquare,
+  faPlus,
+  faPlusCircle,
+  faPlusSquare,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FC, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import Icon from '../../components/Icon';
+library.add(faPlus, faPlusCircle, faPlusSquare, faMinus, faMinusCircle, faMinusSquare);
 
-export type CommonCounterProps = {
+export type CounterProps = {
+  /**
+   * 初始状态
+   * @default 0
+   */
   initialValue?: number;
   label: string;
   iconDecrement: 'minus' | 'circle-minus' | 'square-minus';
@@ -11,7 +25,7 @@ export type CommonCounterProps = {
   onChange: (count: number) => void;
 };
 
-export const CommonCounter: FC<CommonCounterProps> = ({
+export const Counter: FC<CounterProps> = ({
   initialValue = 0,
   label,
   iconDecrement,
@@ -43,12 +57,12 @@ export const CommonCounter: FC<CommonCounterProps> = ({
   return (
     <StyledCounter>
       <StyledButton onClick={handleDecrement}>
-        <Icon icon={iconDecrement} variant={'primary'} />
+        <FontAwesomeIcon icon={iconDecrement} color="#17a2b8" />
       </StyledButton>
       <StyledLabel>{label}</StyledLabel>
       <StyledCount hasError={hasError}>{count}</StyledCount>
       <StyledButton onClick={handleIncrement}>
-        <Icon icon={iconIncrement} variant={'primary'} />
+        <FontAwesomeIcon icon={iconIncrement} color="#17a2b8" />
       </StyledButton>
     </StyledCounter>
   );
