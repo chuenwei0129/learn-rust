@@ -5,8 +5,9 @@ import { Decrement } from './sub-components/Decrement';
 import { Increment } from './sub-components/Increment';
 import { Label } from './sub-components/Label';
 
-type CompoundCounterProps = {
+type ControlCounterProps = {
   initialValue?: number;
+  value?: number;
   onChange?: (value: number) => void;
   children: React.ReactNode;
 };
@@ -19,24 +20,41 @@ export const CounterContext = createContext(
   },
 );
 
-const CompoundCounter = ({ initialValue = 0, onChange, children }: CompoundCounterProps) => {
+const ControlCounter = ({ initialValue = 0, value, onChange, children }: ControlCounterProps) => {
+  // 非受控，内部状态
   const [count, setCount] = useState(initialValue);
 
+  // 是否受控
+  const isControlled = value !== undefined && !!onChange;
+
+  if (isControlled && initialValue !== 0) {
+    console.warn('when isControlled, initialValue will be ignored');
+  }
+
+  // 状态控制权转移
+  const getCount = () => (isControlled ? value : count);
+
+  // 非受控模式同步数据
   const firstMounded = useRef(true);
 
   useEffect(() => {
-    if (!firstMounded.current) {
+    if (!firstMounded.current && !isControlled) {
       onChange && onChange(count);
     }
     firstMounded.current = false;
-  }, [count, onChange]);
+  }, [count, onChange, isControlled]);
+
+  // 改变状态控制权转移
+  const handleCountChange = (newValue: number) => {
+    isControlled ? onChange(newValue) : setCount(newValue);
+  };
 
   const handleIncrement = () => {
-    setCount(count + 1);
+    handleCountChange(getCount() + 1);
   };
 
   const handleDecrement = () => {
-    setCount(Math.max(0, count - 1));
+    handleCountChange(Math.max(0, getCount() - 1));
   };
 
   const renderChildren = () => {
@@ -56,7 +74,7 @@ const CompoundCounter = ({ initialValue = 0, onChange, children }: CompoundCount
   };
 
   return (
-    <CounterContext.Provider value={{ count, handleDecrement, handleIncrement }}>
+    <CounterContext.Provider value={{ count: getCount(), handleDecrement, handleIncrement }}>
       <StyledCounter>{renderChildren()}</StyledCounter>
     </CounterContext.Provider>
   );
@@ -70,9 +88,9 @@ const StyledCounter = styled.div`
   overflow: hidden;
 `;
 
-CompoundCounter.Count = Count;
-CompoundCounter.Label = Label;
-CompoundCounter.Increment = Increment;
-CompoundCounter.Decrement = Decrement;
+ControlCounter.Count = Count;
+ControlCounter.Label = Label;
+ControlCounter.Increment = Increment;
+ControlCounter.Decrement = Decrement;
 
-export { CompoundCounter };
+export { ControlCounter };
