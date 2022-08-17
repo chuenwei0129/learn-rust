@@ -16,9 +16,10 @@ export const useCounter = ({ initialCount, max }: { initialCount: number; max: n
   // 不过 props 还是得看内部如何使用
   const getCounterProps = ({ ...otherProps } = {}) => ({
     value: count,
-    'value-max': max,
-    'value-min': 0,
-    'value-current': count,
+    // 无障碍访问
+    'aria-valuemax': max,
+    'aria-valuemin': 0,
+    'aria-valuenow': count,
     ...otherProps,
   });
 

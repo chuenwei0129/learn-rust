@@ -14,6 +14,8 @@ nav:
 - https://nostalgic-css.github.io/NES.css/
 - https://www.zhihu.com/question/531555960
 - https://zhuanlan.zhihu.com/p/536322574
+- https://zhuanlan.zhihu.com/p/537385085
+- https://zhuanlan.zhihu.com/p/539944257
 
 关于组件分割：
 

@@ -9,8 +9,8 @@ export default defineConfig({
       skipNodeModules: true,
     },
   },
-  favicon: 'https://nostalgic-css.github.io/NES.css/favicon.png',
-  logo: 'https://nostalgic-css.github.io/NES.css/favicon.png',
+  favicon: 'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/favicon.png',
+  logo: 'https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/react/favicon.png',
   outputPath: 'docs-dist',
   mode: 'site',
   navs: [
