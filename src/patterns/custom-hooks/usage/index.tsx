@@ -1,5 +1,5 @@
-import { CustomHookCounter, useCounter } from 'nes-react';
 import React from 'react';
+import { CustomHookCounter, useCounter } from 'react-component-patterns';
 
 export default () => {
   const [count, increment, decrement] = useCounter(3);

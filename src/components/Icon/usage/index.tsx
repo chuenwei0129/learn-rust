@@ -1,5 +1,5 @@
-import { Icon } from 'nes-react';
 import React from 'react';
+import { Icon } from 'react-component-patterns';
 
 export default () => (
   <>

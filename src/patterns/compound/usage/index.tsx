@@ -1,5 +1,5 @@
-import { CompoundCounter } from 'nes-react';
 import React from 'react';
+import { CompoundCounter } from 'react-component-patterns';
 
 export default () => {
   const handleChangeCounter = (count: number) => {

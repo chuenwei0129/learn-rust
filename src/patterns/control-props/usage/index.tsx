@@ -1,5 +1,5 @@
-import { ControlCounter } from 'nes-react';
 import React from 'react';
+import { ControlCounter } from 'react-component-patterns';
 
 export default () => {
   const [count, setCount] = React.useState(0);

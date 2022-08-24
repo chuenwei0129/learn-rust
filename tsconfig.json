@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "paths": {
-      "nes-react": ["./src/index.ts"]
+      "react-component-patterns": ["./src/index.ts"]
     }
   }
 }

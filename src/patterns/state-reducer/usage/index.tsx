@@ -1,11 +1,11 @@
+import React from 'react';
 import {
   CounterAction,
   CounterState,
   DECREMENT,
   ReducerCounter,
   useReducerCounter,
-} from 'nes-react';
-import React from 'react';
+} from 'react-component-patterns';
 
 export default () => {
   const handleChangeCounter = (count: number) => {

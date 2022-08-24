@@ -14,7 +14,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from 'nes-react';
+import { Foo } from 'react-component-patterns';
 
 export default () => <Foo title="First Demo" />;
 ```

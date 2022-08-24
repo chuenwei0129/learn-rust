@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'nes-react',
+  title: 'react-component-patterns',
   // 过滤非自定义 props
   apiParser: {
     propFilter: {
@@ -17,7 +17,7 @@ export default defineConfig({
     null,
     {
       title: 'GitHub',
-      path: 'https://github.com/chuenwei0129/nes-react',
+      path: 'https://github.com/chuenwei0129/react-component-patterns',
     },
   ],
   // more config: https://d.umijs.org/config

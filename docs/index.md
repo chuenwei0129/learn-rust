@@ -1,8 +1,8 @@
 ---
-title: nes-react
+title: react-component-patterns
 hero:
-  title: nes-react
-  desc: 🏆 nes-react is a react component that is using NES.css.
+  title: react-component-patterns
+  desc: 🏆 react-component-patterns is a react component that is using NES.css.
   actions:
     - text: Getting Started
       link: /components

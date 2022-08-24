@@ -1,5 +1,5 @@
-import { PropsGetterCounter, useGetterCounter } from 'nes-react';
 import React from 'react';
+import { PropsGetterCounter, useGetterCounter } from 'react-component-patterns';
 
 export default () => {
   const { count, getCounterProps, getIncrementProps, getDecrementProps } = useGetterCounter({

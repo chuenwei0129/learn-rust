@@ -5,9 +5,9 @@ nav:
   path: /patterns
 ---
 
-# 组件架构
+## 组件设计模式
 
-## 草稿
+<!-- ## 草稿
 
 - https://javascript.plainenglish.io/5-advanced-react-patterns-a6b7624267a6
 - https://github.com/alexis-regnaud/advanced-react-patterns
@@ -37,7 +37,7 @@ nav:
 
 3，绝大部分组件，不管是组件库中的组件还是业务项目中的组件，都不该引用全局数据流。
 
-4，请务必重视组件的渲染次数问题，你的组件的渲染次数可能比你以为的要多的多。什么情况下应该用非受控组件呀？比如 onchange 输出的状态数据很大，也不 immutable，一来一回比较费时，然而外部除了存储一下之外确实也没啥要中途改动的诉求。
+4，请务必重视组件的渲染次数问题，你的组件的渲染次数可能比你以为的要多的多。什么情况下应该用非受控组件呀？比如 onchange 输出的状态数据很大，也不 immutable，一来一回比较费时，然而外部除了存储一下之外确实也没啥要中途改动的诉求。 -->
 
 ## common
 
