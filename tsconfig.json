@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "esModuleInterop": true,
-    "types": ["jest"],
     "strict": true,
-    "skipLibCheck": true,
     "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": "./",
     "paths": {
-      "react-component-patterns": ["./src/index.ts"]
+      "@@/*": [".dumi/tmp/*"],
+      "favor-ui": ["src"],
+      "favor-ui/*": ["src/*", "*"]
     }
-  }
+  },
+  "include": [".dumirc.ts", "src/**/*"]
 }

@@ -1,13 +1,40 @@
-# Hello World
+# favor-ui
 
-> 玩具项目
+[![NPM version](https://img.shields.io/npm/v/favor-ui.svg?style=flat)](https://npmjs.org/package/favor-ui)
+[![NPM downloads](http://img.shields.io/npm/dm/favor-ui.svg?style=flat)](https://npmjs.org/package/favor-ui)
 
-## 前置知识
+A react library developed with dumi
 
-- [Refs 转发](https://zh-hans.reactjs.org/docs/forwarding-refs.html)
-- [🔖TypeScript 备忘录：如何在 React 中完美运用？](https://juejin.cn/post/6910863689260204039)
-- **[详解  `as`  属性](https://www.robinwieruch.de/react-as-prop/)** — 这是一种以灵活的方式将语义与美学结合起来的简洁描述。
-- **[升级到 React 18 所对应的 TypeScript 类型定义的改动](https://blog.logrocket.com/upgrading-react-18-typescript/)**
-- [React Hook: Detect Click outside of Component](https://www.robinwieruch.de/react-hook-detect-click-outside-component/)
+## Usage
 
-map
+TODO
+
+## Options
+
+TODO
+
+## Development
+
+```bash
+# install dependencies
+$ pnpm install
+
+# develop library by docs demo
+$ pnpm start
+
+# build library source code
+$ pnpm run build
+
+# build library source code in watch mode
+$ pnpm run build:watch
+
+# build docs
+$ pnpm run docs:build
+
+# check your project for potential problems
+$ pnpm run doctor
+```
+
+## LICENSE
+
+MIT
