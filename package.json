@@ -1,6 +1,6 @@
 {
-  "name": "favor-ui",
-  "version": "1.0.7",
+  "name": "nautica",
+  "version": "1.0.8",
   "description": "A react library",
   "license": "MIT",
   "module": "dist/index.js",

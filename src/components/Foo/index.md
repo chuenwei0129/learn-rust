@@ -13,7 +13,7 @@ group:
 This is an example component.
 
 ```jsx
-import { Foo } from 'favor-ui'
+import { Foo } from 'nautica'
 
 export default () => <Foo title="Hello dumi!" />
 ```

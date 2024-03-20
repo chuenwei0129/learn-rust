@@ -1,7 +1,7 @@
-# favor-ui
+# nautica
 
-[![NPM version](https://img.shields.io/npm/v/favor-ui.svg?style=flat)](https://npmjs.org/package/favor-ui)
-[![NPM downloads](http://img.shields.io/npm/dm/favor-ui.svg?style=flat)](https://npmjs.org/package/favor-ui)
+[![NPM version](https://img.shields.io/npm/v/nautica.svg?style=flat)](https://npmjs.org/package/nautica)
+[![NPM downloads](http://img.shields.io/npm/dm/nautica.svg?style=flat)](https://npmjs.org/package/nautica)
 
 A react library developed with dumi
 

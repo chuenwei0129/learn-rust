@@ -3,7 +3,7 @@ import { defineConfig } from 'dumi'
 export default defineConfig({
   outputPath: 'docs-dist',
   themeConfig: {
-    name: 'favor-ui',
+    name: 'nautica',
     socialLinks: {
       github: 'https://github.com/umijs/dumi',
     },
