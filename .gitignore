@@ -6,4 +6,4 @@ node_modules
 .DS_Store
 
 /coverage
-/src/utils/coverage
+/src/**/coverage
