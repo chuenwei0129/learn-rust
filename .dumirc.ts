@@ -5,7 +5,7 @@ export default defineConfig({
   themeConfig: {
     name: 'nautica',
     socialLinks: {
-      github: 'https://github.com/umijs/dumi',
+      github: 'https://github.com/chuenwei0129/nautica',
     },
   },
   resolve: {

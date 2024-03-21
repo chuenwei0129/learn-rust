@@ -1,8 +1,7 @@
 ---
 nav:
-  title: React
-  order: 5
-title: React
+  title: vue
+  order: 100
 group:
   title: 介绍
   order: -1
