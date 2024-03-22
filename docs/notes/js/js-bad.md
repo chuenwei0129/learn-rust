@@ -3,7 +3,6 @@ title: 坏味道
 order: 18
 group:
   title: JS 基础
-  order: -1
 ---
 
 # JavaScript 中至少 90% 匪夷所思的问题，都是历史遗留问题

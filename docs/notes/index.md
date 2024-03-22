@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 笔记
+  title: 我的小册
   order: 999
 group:
   title: 介绍
@@ -8,3 +8,5 @@ group:
 ---
 
 # 这是什么？
+
+> My life sucks and I'm going to rewrite it in JavaScript.

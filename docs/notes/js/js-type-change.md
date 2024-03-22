@@ -1,5 +1,5 @@
 ---
-title: 类型转换
+title: Type
 order: 8
 group:
   title: JS 基础

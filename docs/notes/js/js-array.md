@@ -3,7 +3,6 @@ title: Array
 order: 5
 group:
   title: JS 基础
-  order: -1
 ---
 
 # 数组

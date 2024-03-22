@@ -1,6 +1,7 @@
 ---
 title: 正则
 order: 17
+toc: content
 group:
   title: JS 基础
   order: -1
@@ -56,7 +57,7 @@ group:
 | `g`  | 全局搜索: 搜索整个输入字符串中的所有匹配，**取消正则懒惰性** |
 | `m`  |        多行匹配: 会匹配输入字符串每一行，忽略换行匹配        |
 
-## `[]`
+## 中括号
 
 - `[]` 中出现的字符一般都代表本身的含义。
 
@@ -85,7 +86,7 @@ const str = '1'
 console.log(reg.test(str)) // true
 ```
 
-## `?`
+## 问号
 
 - `?` 在非量词元字符之后————表示为量词元字符，匹配前面的子表达式零次或一次
 - `?` 在量词元字符之后————**取消正则贪婪性**
@@ -93,35 +94,25 @@ console.log(reg.test(str)) // true
 - `?=` 正向预查
 - `?!` 负向预查
 
-## `RegExp.prototype.exec()`
+## 分组
+
+分组主要是用过 `()` 进行实现，比如 `beyond{3}`，是匹配 `d` 字母 3 次。而 `(beyond){3}` 是匹配 `beyond` 三次。
+
+在 `()` 内使用 `|` 达到或的效果，如 `(abc|xxx)` 可以匹配 `abc` 或者 `xxx`。
+
+## 分组引用
 
 ```js
-// 匹配身份证号码
-//  18 位，最后一位可能是 X
-// 简单：/^\d{17}(\d|X)$/
+// ^：这个符号表示字符串的开始。
+// [a-zA-Z]：这个部分匹配单个字母，无论大小写。它是由两个范围组合而成：a-z 匹配任何小写字母，A-Z 匹配任何大写字母。
+// ([a-zA-Z])：这部分再次匹配单个字母（无论大小写），与前一个部分相同。不同之处在于，这里使用了圆括号()，这意味着匹配到的字符将被捕获并存储在一个临时的“组”中，以便后续可以引用。这是第一个（也是唯一一个）捕获组，因此它被编号为 1。
+// \1：这里的 \1 是一个反向引用，它引用前面定义的第一个捕获组的内容。
+// [a-zA-Z]：这部分再次匹配单个字母，无论大小写，与前面的匹配规则相同。
+// $：这个符号表示字符串的结束。
+const reg9 = /^[a-zA-Z]([a-zA-Z])\1[a-zA-Z]$/
 
-// 身份证前六位 省市县
-// 中间八位 年月日
-// 最后四位 最后一位 X 或数字、倒数第二位 偶数女 奇数男、其余两位 公安局编码
-// 分组捕获
-// 出现 ｜ 需要加 （）
-// ?: 匹配不捕获
-
-console.log(
-  /^(\d{6})(\d{4})(\d{2})(\d{2})\d{2}(\d)(?:\d|X)$/.exec('320101198904196476'),
-)
-
-// [
-//   '320101198904196476', 字符串整体捕获
-//   '320101', 括号小分组捕获
-//   '1989', 小分组
-//   '04', 小分组
-//   '19', 小分组
-//   '7', 小分组
-//   index: 0, 正则懒惰性 lastIndex 相关
-//   input: '320101198904196476', 字符串本体
-//   groups: undefined
-// ]
+console.log(reg9.test('book')) // true
+console.log(reg9.exec('moon')) // [ 'moon', 'o', index: 0, input: 'moon', groups: undefined ]
 ```
 
 ## 懒惰性
@@ -164,41 +155,6 @@ console.log(reg8.exec('chuenwei0129chuenwei0129chuenwei0129')) // null
 console.log(reg8.lastIndex) // 0
 ```
 
-## match
-
-```js
-// execAll 捕获全部符合条件的字串，必须取消懒惰性
-// match 原理
-RegExp.prototype.execAll = function (str) {
-  if (!this.global) return this.exec(str)
-  const res = []
-  let item = this.exec(str)
-  while (item) {
-    res.push(item[0])
-    item = this.exec(str)
-  }
-  return res
-}
-
-console.log(reg8.execAll('chuenwei0129chuenwei0129chuenwei0129')) // [ '0129', '0129', '0129' ]
-console.log('chuenwei0129chuenwei0129chuenwei0129'.match(reg8)) // [ '0129', '0129', '0129' ]
-
-// match 分组捕获
-console.log(reg6.exec('320101198904196476'))
-console.log('320101198904196476'.match(reg6)) // 无法捕获小分组
-```
-
-## 分组引用
-
-```js
-// \1 匹配重复一次后面加量词表示多次 x => xx{n,m}
-// \2 匹配重复两次后面加量词表示多次 x => xxx{n,m}
-const reg9 = /^[a-zA-Z]([a-zA-Z])\1[a-zA-Z]$/
-
-console.log(reg9.test('book')) // true
-console.log(reg9.exec('moon')) // [ 'moon', 'o', index: 0, input: 'moon', groups: undefined ]
-```
-
 ## 贪婪性
 
 ```js
@@ -224,7 +180,88 @@ console.log(reg11.exec(str1))
 // ]
 ```
 
-## test 捕获
+## 先行断言 / 先行否定断言
+
+```js
+/b(?=c)/.test('bc') // true     断定 b 在 c 前面，匹配仅当 b 后面跟着 c 的情况，且 c 不会被捕获到
+// 逆运算
+
+/b(?!c)/.test('bc') // false     断定 b 不在 c 前面，且 c 不会被捕获到
+```
+
+## 匹配方法
+
+正则表达式常被用于某些方法，我们可以分成两类：
+
+- 字符串 (str) 方法：`match`、`matchAll`、`search`、`replace`、`split`
+- 正则对象下 (regexp) 的方法：`test`、`exec`
+
+| 方法     | 描述                                                                                                   |
+| -------- | ------------------------------------------------------------------------------------------------------ |
+| exec     | 一个在字符串中执行查找匹配的 RegExp 方法，它返回一个数组（未匹配到则返回 null）。                      |
+| test     | 一个在字符串中测试是否匹配的 RegExp 方法，它返回 true 或 false。                                       |
+| match    | 一个在字符串中执行查找匹配的 String 方法，它返回一个数组，在未匹配到时会返回 null。                    |
+| matchAll | 一个在字符串中执行查找所有匹配的 String 方法，它返回一个迭代器（iterator）。                           |
+| search   | 一个在字符串中测试匹配的 String 方法，它返回匹配到的位置索引，或者在失败时返回-1。                     |
+| replace  | 一个在字符串中执行查找匹配的 String 方法，并且使用替换字符串替换掉匹配到的子字符串。                   |
+| split    | 一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的 `String` 方法。 |
+
+### match
+
+```js
+// execAll 捕获全部符合条件的字串，必须取消懒惰性
+// match 原理
+RegExp.prototype.execAll = function (str) {
+  if (!this.global) return this.exec(str)
+  const res = []
+  let item = this.exec(str)
+  while (item) {
+    res.push(item[0])
+    item = this.exec(str)
+  }
+  return res
+}
+
+console.log(reg8.execAll('chuenwei0129chuenwei0129chuenwei0129')) // [ '0129', '0129', '0129' ]
+console.log('chuenwei0129chuenwei0129chuenwei0129'.match(reg8)) // [ '0129', '0129', '0129' ]
+
+// match 分组捕获
+console.log(reg6.exec('320101198904196476'))
+console.log('320101198904196476'.match(reg6)) // 无法捕获小分组
+```
+
+### exec
+
+```js
+// 匹配身份证号码
+//  18 位，最后一位可能是 X
+// 简单：/^\d{17}(\d|X)$/
+
+// 身份证前六位 省市县
+// 中间八位 年月日
+// 最后四位 最后一位 X 或数字、倒数第二位 偶数女 奇数男、其余两位 公安局编码
+// 分组捕获
+// 出现 ｜ 需要加 （）
+// ?: 匹配不捕获
+
+console.log(
+  /^(\d{6})(\d{4})(\d{2})(\d{2})\d{2}(\d)(?:\d|X)$/.exec('320101198904196476'),
+)
+
+// [
+//   '320101198904196476', 字符串整体捕获
+//   '320101', 括号小分组捕获
+//   '1989', 小分组
+//   '04', 小分组
+//   '19', 小分组
+//   '7', 小分组
+//   index: 0, 正则懒惰性 lastIndex 相关
+//   input: '320101198904196476', 字符串本体
+//   groups: undefined
+// ]
+```
+
+### test
 
 ```js
 // test 捕获
@@ -239,7 +276,7 @@ console.log(_reg.test(_str)) // true
 console.log(RegExp.$1) // 2
 ```
 
-## replace
+### replace
 
 ```js
 // replace 方法
@@ -275,15 +312,6 @@ console.log(_time)
 time.replace(_reg1, (...args) => {
   console.log(args)
 })
-```
-
-## 先行断言 / 先行否定断言
-
-```js
-/b(?=c)/.test('bc') // true     断定 b 在 c 前面，且 c 不会被捕获到
-// 逆运算
-
-/b(?!c)/.test('bc') // false     断定 b 不在 c 前面，且 c 不会被捕获到
 ```
 
 ## 应用
@@ -404,9 +432,9 @@ function checkNum(num) {
 
 console.log(checkNum(num))
 
-// 两个量词需要加括号，?=不需要加括号
+// 对后面跟有三个或三的倍数个连续数字的数后面加上逗号
 function _checkNum(str) {
-  return str.replace(/\d{1,3}(?=(\d{3})+$)/g, (ctn) => `${ctn},`)
+  return str.replace(/\d(?=(\d{3})+$)/g, (ctn) => `${ctn},`)
 }
 
 console.log(_checkNum(num))
@@ -414,7 +442,7 @@ console.log(_checkNum(num))
 console.log(num.toLocaleString('en-US'))
 ```
 
-## 什么时候使用 new RegExp?
+## 什么时候使用 new RegExp？
 
 通常我们使用的都是简短语法 `/.../`。但是它不接受任何变量插入，所以我们必须在写代码的时候就知道确切的 `regexp`。
 
