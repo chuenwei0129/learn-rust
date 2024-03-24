@@ -11,6 +11,7 @@ export default defineConfig({
       'src/components/**',
       'src/hooks/**',
       'src/patterns/**',
+      'playground/**',
     ],
   },
 })

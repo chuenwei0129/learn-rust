@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 组件
+  title: 组件库
   order: 0
 title: Foo 组件
 group:

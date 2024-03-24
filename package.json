@@ -50,7 +50,6 @@
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
     "@umijs/lint": "^4.0.0",
-    "antd": "^5.15.3",
     "dumi": "^2.2.13",
     "eslint": "^8.23.0",
     "father": "^4.1.0",
@@ -62,8 +61,11 @@
     "prettier-plugin-packagejson": "^2.2.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0",
     "stylelint": "^14.9.1",
-    "ts-jest": "^29.1.2"
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.3"
   },
   "peerDependencies": {
     "react": ">=16.9.0",

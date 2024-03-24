@@ -8,6 +8,9 @@ export default defineConfig({
       github: 'https://github.com/chuenwei0129/nautica',
     },
   },
+  // 添加 latex 插件
+  extraRemarkPlugins: ['remark-math'],
+  extraRehypePlugins: ['rehype-katex'],
   apiParser: {
     parseOptions: {},
   },

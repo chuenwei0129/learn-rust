@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 工具函数
+  title: 工具库
   # order: 0
 title: typeChecks
 group:
