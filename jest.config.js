@@ -122,7 +122,7 @@ const config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: './src/utils',
+  // rootDir: '',
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -137,6 +137,7 @@ const config = {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
+  // setupFilesAfterEnv: ['./jest.setup.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -146,6 +147,7 @@ const config = {
 
   // The test environment that will be used for testing
   // testEnvironment: "jest-environment-node",
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

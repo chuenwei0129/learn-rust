@@ -1,5 +1,6 @@
 import { useLatest } from 'nautica'
-import React, { useState, type ChangeEvent } from 'react'
+import type { ChangeEvent } from 'react'
+import React, { useState } from 'react'
 
 export default function Chat() {
   const [text, setText] = useState('')
