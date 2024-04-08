@@ -3,9 +3,9 @@ import { defineConfig } from 'dumi'
 export default defineConfig({
   outputPath: 'docs-dist',
   themeConfig: {
-    name: 'nautica',
+    name: 'localhost',
     socialLinks: {
-      github: 'https://github.com/chuenwei0129/nautica',
+      github: 'https://github.com/chuenwei0129/localhost',
     },
   },
   // 添加 latex 插件

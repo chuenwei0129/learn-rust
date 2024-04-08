@@ -1,17 +1,23 @@
-# nautica
+# localhost
 
-[![NPM version](https://img.shields.io/npm/v/nautica.svg?style=flat)](https://npmjs.org/package/nautica)
-[![NPM downloads](http://img.shields.io/npm/dm/nautica.svg?style=flat)](https://npmjs.org/package/nautica)
+<!-- [![NPM version](https://img.shields.io/npm/v/localhost.svg?style=flat)](https://npmjs.org/package/localhost)
+[![NPM downloads](http://img.shields.io/npm/dm/localhost.svg?style=flat)](https://npmjs.org/package/localhost) -->
 
 A react library developed with dumi
 
 ## Usage
 
-TODO
+```javascript
+console.log('Hello, World!')
+const f = () => 1
+f() // ⇨ 1
+```
 
 ## Options
 
-TODO
+```javascript
+;['Hello', ' World!'].join(',') // ⇨ 'Hello, World!'
+```
 
 ## Development
 
@@ -38,3 +44,35 @@ $ pnpm run doctor
 ## LICENSE
 
 MIT
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>
+
+---
+
+Markdown generated from [README.md](README.md) by <a href="https://github.com/broofa/runmd"><image height="12px" src="https://camo.githubusercontent.com/5c7c603cd1e6a43370b0a5063d457e0dabb74cf317adc7baba183acb686ee8d0/687474703a2f2f692e696d6775722e636f6d2f634a4b6f3662552e706e67" /></a>

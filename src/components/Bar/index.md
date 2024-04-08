@@ -10,7 +10,7 @@ group:
 This is an example component.
 
 ```jsx
-import { Bar } from 'nautica'
+import { Bar } from 'localhost'
 
 export default () => <Bar title="Hello dumi!" />
 ```

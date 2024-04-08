@@ -8,6 +8,22 @@ group:
 
 # 数组
 
+## 数组 size
+
+```js
+// 4294967295 这个值有什么含义吗？
+// 按 ECMA 最新的规范，数组的 size 使用 32 位 int 存储，所以最大长度是 2^32 - 1 = 4294967295
+// 小整数？setTimout 也是小整数？据说 setTimout 4ms 已经优化为 0 ms
+var MAX_ARRAY_LENGTH = 4294967295 // 最大的数组长度
+
+// 测试
+const arr = []
+arr[4294967295] = 100 // length = 4294967296
+arr[4294967294] = 99 // length = 4294967295
+// => [ <4294967294 empty items>, 99, '4294967295': 100 ]
+console.log(arr)
+```
+
 ## 奇技淫巧
 
 > [JavaScript 有必要缓存 for 循环中的 Array.length 吗？](https://www.zhihu.com/question/29714976)

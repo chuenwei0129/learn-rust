@@ -25,7 +25,7 @@ group:
 ### 示例
 
 ```ts
-import { addThousandsSeparator } from 'nautica'
+import { addThousandsSeparator } from 'localhost'
 
 console.log(addThousandsSeparator(123456789))
 // => '123,456,789'
