@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Session Auth Demo</title>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <button id="loginBtn" onclick="login()">Login</button>
+    <!-- 初始时隐藏 Fetch User Info 按钮 -->
+    <button id="fetchBtn" onclick="fetchUserInfo()" style="display: none">
+      Fetch User Info
+    </button>
+    <div id="userInfo"></div>
+
+    <script>
+      function login() {
+        const username = document.getElementById('username').value
+        fetch(`http://127.0.0.1:3000/login?username=${username}`, {
+          credentials: 'include',
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            alert(data)
+            // 登录成功后，隐藏登录按钮和输入框，显示 Fetch User Info 按钮
+            document.getElementById('loginBtn').style.display = 'none'
+            document.getElementById('username').style.display = 'none'
+            document.getElementById('fetchBtn').style.display = 'inline'
+          })
+      }
+
+      function fetchUserInfo() {
+        fetch('http://127.0.0.1:3000/userinfo', {
+          credentials: 'include',
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const userInfoDiv = document.getElementById('userInfo')
+            userInfoDiv.innerHTML =
+              '<ul>' +
+              data.map((user) => `<li>${user.name}</li>`).join('') +
+              '</ul>'
+          })
+      }
+    </script>
+  </body>
+</html>

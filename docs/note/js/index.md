@@ -2,8 +2,8 @@
 # 自定义二级导航
 nav:
   second:
-    title: JavaScript
-    order: -999
+    title: 深入浅出 JavaScript
+    order: 0
 # 菜单栏标题
 # title: 介绍
 order: -999

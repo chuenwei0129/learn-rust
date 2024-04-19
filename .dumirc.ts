@@ -3,14 +3,15 @@ import { defineConfig } from 'dumi'
 export default defineConfig({
   outputPath: 'docs-dist',
   themeConfig: {
-    name: 'localhost',
+    name: 'nautica',
     socialLinks: {
-      github: 'https://github.com/chuenwei0129/localhost',
+      github: 'https://github.com/chuenwei0129/nautica',
     },
   },
   // 添加 latex 插件
   extraRemarkPlugins: ['remark-math'],
-  extraRehypePlugins: ['rehype-katex'],
+  extraRehypePlugins: ['rehype-mathjax'],
+  // apiParser
   apiParser: {
     parseOptions: {},
   },

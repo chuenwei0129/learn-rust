@@ -1,4 +1,4 @@
-# CSS<!-- omit in toc -->
+<!-- # CSS<!-- omit in toc -->
 
 - [为什么 CSS 这么难学？](#为什么-css-这么难学)
 - [link 标签和 @import 都能导入一个样式文件，它们有什么区别嘛？](#link-标签和-import-都能导入一个样式文件它们有什么区别嘛)
@@ -12,8 +12,8 @@
   - [实战：表单控件](#实战表单控件)
 - [盒模型](#盒模型)
 - [margin 负值](#margin-负值)
-- [块级盒子（Block box）和 内联盒子（Inline box）](#块级盒子block-box和-内联盒子inline-box)
-- [使用 display: inline-block](#使用-display-inline-block)
+- [块级盒子 (Block box) 和内联盒子 (Inline box)](#块级盒子-block-box-和内联盒子-inline-box)
+- [使用 display：inline-block](#使用-displayinline-block)
 - [格式化上下文](#格式化上下文)
   - [BFC](#bfc)
   - [IFC](#ifc)
@@ -61,9 +61,9 @@
 
 2. **标签选择器、伪元素选择器的优先级相同，而类选择器和属性选择器以及伪类选择器的优先级相同。**
 
-3. 通用选择器（[`*`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors)）、组合符（`+`、`>`、`~`、' '）和调整优先级的选择器（[`:where()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)）不会影响优先级。
+3. 通用选择器 ([`*`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors))、组合符 (`+`、`>`、`~`、‘’) 和调整优先级的选择器 ([`:where()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)) 不会影响优先级。
 
-4. 否定（[`:not()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)）和任意匹配（[`:is()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)）伪类本身对优先级没有影响，但它们的参数则会带来影响。参数中，**对优先级算法有贡献的参数的优先级的最大值**将作为该伪类选择器的优先级。
+4. 否定 ([`:not()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)) 和任意匹配 ([`:is()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)) 伪类本身对优先级没有影响，但它们的参数则会带来影响。参数中，**对优先级算法有贡献的参数的优先级的最大值**将作为该伪类选择器的优先级。
 
 5. 内联样式，即 [`style`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#style) 属性内的样式声明，优先于所有普通的样式，无论其优先级如何。这样的声明没有选择器，但它们的优先级可以理解为 1-0-0-0；即无论选择器中有多少个 ID，它总是比其他任何优先级的权重都要高。
 
@@ -85,24 +85,24 @@
 
 CSS 属性很多，但并不是所有的属性默认都是能继承父元素对应属性的，那哪些属性存在默认继承的行为呢？**一定是那些不会影响到页面布局的属性**，可以分为如下几类：
 
-- **字体相关：** `font-family`、`font-style`、`font-size`、`font-weight` 等
-- **文本相关：** `text-align`、`text-indent`、`text-decoration`、`text-shadow`、`letter-spacing`、`word-spacing`、`white-space`、`line-height`、`color` 等
-- **列表相关：** `list-style`、`list-style-image`、`list-style-type`、`list-style-position` 等
-- **其他属性：** `visibility`、`cursor` 等
+- **字体相关：**`font-family`、`font-style`、`font-size`、`font-weight` 等
+- **文本相关：**`text-align`、`text-indent`、`text-decoration`、`text-shadow`、`letter-spacing`、`word-spacing`、`white-space`、`line-height`、`color` 等
+- **列表相关：**`list-style`、`list-style-image`、`list-style-type`、`list-style-position` 等
+- **其他属性：**`visibility`、`cursor` 等
 
 **对于其他默认不继承的属性也可以通过以下几个属性值来控制继承行为：**
 
-- **`inherit`：** 继承父元素对应属性的计算值
-- **`initial`：** 应用该属性的默认值，比如 `color` 的默认值是 `#000`
-- **`unset`：** 如果属性是默认可以继承的，则取 `inherit` 的效果，否则同 `initial`
+- **`inherit`：**继承父元素对应属性的计算值
+- **`initial`：**应用该属性的默认值，比如 `color` 的默认值是 `#000`
+- **`unset`：**如果属性是默认可以继承的，则取 `inherit` 的效果，否则同 `initial`
 
 ## 选择器
 
 ### 选择器列表
 
-CSS **选择器列表**（`,`）选择所有匹配的节点。选择器列表是以逗号分隔的多个选择器所组成的列表。
+CSS **选择器列表** (`,`) 选择所有匹配的节点。选择器列表是以逗号分隔的多个选择器所组成的列表。
 
-当多个选择器共享相同的声明时，它们可以被编组进一个以逗号分隔的列表。选择器列表也可以作为参数传递给一些函数式 CSS 伪类。逗号之前和/或之后可以有空白（字符）。
+当多个选择器共享相同的声明时，它们可以被编组进一个以逗号分隔的列表。选择器列表也可以作为参数传递给一些函数式 CSS 伪类。逗号之前和/或之后可以有空白 (字符)。
 
 以下三个声明是等效的：
 
@@ -231,16 +231,16 @@ h3 {
 
 ### [使用全局选择器，让选择器更易读](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors#使用全局选择器，让选择器更易读)
 
-全局选择器的一种用法是让选择器更易读，更明显地表明它们的作用。例如，如果我想选中任何`<article>`元素的第一子元素，不论它是什么元素，都给它加粗，我可以将[`:first-child`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-child)选择器（我们将会在[伪类和伪元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)课中进一步了解）用作`<article>`元素选择器的一个后代选择器：
+全局选择器的一种用法是让选择器更易读，更明显地表明它们的作用。例如，如果我想选中任何 `<article>` 元素的第一子元素，不论它是什么元素，都给它加粗，我可以将 [`:first-child`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-child) 选择器 (我们将会在[伪类和伪元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)课中进一步了解) 用作 `<article>` 元素选择器的一个后代选择器：
 
 ```css
 article :first-child {
 }
 ```
 
-但是这会和`article:first-child`混淆，而后者选择了作为其他元素的第一子元素的`<article>`元素。
+但是这会和 `article:first-child` 混淆，而后者选择了作为其他元素的第一子元素的 `<article>` 元素。
 
-为了避免这种混淆，我们可以向`:first-child`选择器加入全局选择器，这样选择器所做的事情很容易就能看懂。选择器正选中`<article>`元素的*任何*第一子元素：
+为了避免这种混淆，我们可以向 `:first-child` 选择器加入全局选择器，这样选择器所做的事情很容易就能看懂。选择器正选中 `<article>` 元素的*任何*第一子元素：
 
 ```css
 article *:first-child {
@@ -268,17 +268,17 @@ article *:first-child {
 
 **技巧：**
 
-**小技巧 1：** `<input>` 使用 `id` 与 `<label>` 使用 `for` 关联起来，而 `hidden` 使 `<input>` 隐藏起来，不占用页面任何位置，此时点击 `<label>` 就相当于点击 `<input>`，`<label>` 放置在页面任何位置都行。
+**小技巧 1：**`<input>` 使用 `id` 与 `<label>` 使用 `for` 关联起来，而 `hidden` 使 `<input>` 隐藏起来，不占用页面任何位置，此时点击 `<label>` 就相当于点击 `<input>`，`<label>` 放置在页面任何位置都行。
 
-**小技巧 2：** 若直接声明 `input:valid` 和 `input:invalid`，在页面初始化后或输入框内容为空时都会触发 `:invalid`，导致表单校验还未开始就显示校验不通过的样式。为了只在输入内容时才触发 `:valid` 和 `:invalid`，可在其前面添加 `:focus`，表示在表单处于聚焦状态时才触发某些行为。
+**小技巧 2：**若直接声明 `input:valid` 和 `input:invalid`，在页面初始化后或输入框内容为空时都会触发 `:invalid`，导致表单校验还未开始就显示校验不通过的样式。为了只在输入内容时才触发 `:valid` 和 `:invalid`，可在其前面添加 `:focus`，表示在表单处于聚焦状态时才触发某些行为。
 
-**小技巧 3：** 有内容和无内容可通过 `:placeholder-shown` 判断。`:placeholder-shown` 表示占位显示的表单元素，而占位不显示的表单元素可用 `:not()` 取反，再结合 `+` 带动紧随该节点的节点。
+**小技巧 3：**有内容和无内容可通过 `:placeholder-shown` 判断。`:placeholder-shown` 表示占位显示的表单元素，而占位不显示的表单元素可用 `:not()` 取反，再结合 `+` 带动紧随该节点的节点。
 
 ## 盒模型
 
 盒模型由以下属性组成，由外到内用公式表示就是：`box = margin + border + padding + content`。
 
-除了 `content`(不是属性，作为盒模型扩展理解使用)，其余属性都包含 `left`、`right`、`top` 和 `bottom` 等扩展属性。
+除了 `content` (不是属性，作为盒模型扩展理解使用)，其余属性都包含 `left`、`right`、`top` 和 `bottom` 等扩展属性。
 
 - **margin**：边距，外部透明区域，负责隔离相邻盒子
 - **border**：边框，内部着色区域，负责隔离边距和填充，包含 `width`、`style`、`color` 三个扩展属性
@@ -287,7 +287,7 @@ article *:first-child {
 
 **CSS3** 里提供一个属性用于声明盒模型的类型，它就是 `box-sizing`。
 
-- `content-box`：标准盒模型(默认)
+- `content-box`：标准盒模型 (默认)
 - `border-box`：怪异盒模型
 
 > **它不具备继承性，若全局统一盒模型**，那只能使用 `*` 声明 `box-sizing` 了。
@@ -298,7 +298,7 @@ article *:first-child {
 - `margin-top` 为负值不会增加高度，只会产生向上位移
 - `margin-bottom` 为负值不会产生位移，会减少自身的供 CSS 读取的高度
 
-**利用 `margin-bottom` 为负值会减少 CSS 读取元素高度的特性，加上 `padding-bottom` 和 `overflow:hidden` ，就能实现一个未知高度的多列等高布局。**
+**利用 `margin-bottom` 为负值会减少 CSS 读取元素高度的特性，加上 `padding-bottom` 和 `overflow:hidden`，就能实现一个未知高度的多列等高布局。**
 
 **负 `margin` 会改变浮动元素的显示位置**，圣杯布局、双飞翼布局什么的，都是利用这个原理实现的。
 
@@ -308,18 +308,18 @@ article *:first-child {
 2. `padding` 不能为负值，`margin` 可以为负值
 3. 背景色会平铺到非 `margin` 区域，`padding` 着色随 `background-color` 而变，可用 `background-clip` 隔离。
 
-## [块级盒子（Block box）和 内联盒子（Inline box）](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model#%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%EF%BC%88block_box%EF%BC%89%E5%92%8C_%E5%86%85%E8%81%94%E7%9B%92%E5%AD%90%EF%BC%88inline_box%EF%BC%89#块级盒子（block_box）和_内联盒子（inline_box）)
+## [块级盒子 (Block box) 和内联盒子 (Inline box)](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model#%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%EF%BC%88block_box%EF%BC%89%E5%92%8C_%E5%86%85%E8%81%94%E7%9B%92%E5%AD%90%EF%BC%88inline_box%EF%BC%89#块级盒子（block_box）和_内联盒子（inline_box）)
 
-在 CSS 中我们广泛地使用两种“盒子” —— **块级盒子** (**block box**) 和 **内联盒子** (**inline box**)。这两种盒子会在**页面流**（page flow）和元素之间的关系方面表现出不同的行为：
+在 CSS 中我们广泛地使用两种 “盒子” —— **块级盒子** (**block box**) 和**内联盒子** (**inline box**)。这两种盒子会在**页面流** (page flow) 和元素之间的关系方面表现出不同的行为：
 
-一个被定义成块级的（block）盒子会表现出以下行为：
+一个被定义成块级的 (block) 盒子会表现出以下行为：
 
 - 盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间，**在绝大数情况下意味着盒子会和父容器一样宽**
 - 每个盒子都会换行
 - [`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 和 [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) 属性可以发挥作用
-- 内边距（padding）, 外边距（margin）和 边框（border）会将其他元素从当前盒子周围“推开”
+- 内边距 (padding)，外边距 (margin) 和边框 (border) 会将其他元素从当前盒子周围 “推开”
 
-除非特殊指定，诸如标题 (`<h1>`等) 和段落 (`<p>`) 默认情况下都是块级的盒子。
+除非特殊指定，诸如标题 (`<h1>` 等) 和段落 (`<p>`) 默认情况下都是块级的盒子。
 
 如果一个盒子对外显示为 `inline`，那么他的行为如下：
 
@@ -328,20 +328,20 @@ article *:first-child {
 - 垂直方向的内边距、外边距以及边框会被应用但是不会把其他处于 `inline` 状态的盒子推开。
 - 水平方向的内边距、外边距以及边框会被应用且会把其他处于 `inline` 状态的盒子推开。
 
-用做链接的 `<a>` 元素、 `<span>`、 `<em>` 以及 `<strong>` 都是默认处于 `inline` 状态的。
+用做链接的 `<a>` 元素、`<span>`、`<em>` 以及 `<strong>` 都是默认处于 `inline` 状态的。
 
-我们通过对盒子[`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 属性的设置，比如 `inline` 或者 `block` ，来控制盒子的外部显示类型。
+我们通过对盒子 [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 属性的设置，比如 `inline` 或者 `block`，来控制盒子的外部显示类型。
 
-> **一个块容器盒只包含其他块级盒，或生成一个行内格式化上下文只包含行内盒。** 或许一段代码中某一个块容器盒同时包含块级盒和行内盒的情况，但实质上在这种情况下会产生一种新的[匿名块盒](./code/anonymous.html)解决该问题。
+> **一个块容器盒只包含其他块级盒，或生成一个行内格式化上下文只包含行内盒。**或许一段代码中某一个块容器盒同时包含块级盒和行内盒的情况，但实质上在这种情况下会产生一种新的[匿名块盒](./code/anonymous.html)解决该问题。
 
-## [使用 display: inline-block](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model#%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%EF%BC%88block_box%EF%BC%89%E5%92%8C_%E5%86%85%E8%81%94%E7%9B%92%E5%AD%90%EF%BC%88inline_box%EF%BC%89#使用_display_inline-block)
+## [使用 display：inline-block](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model#%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%EF%BC%88block_box%EF%BC%89%E5%92%8C_%E5%86%85%E8%81%94%E7%9B%92%E5%AD%90%EF%BC%88inline_box%EF%BC%89#使用_display_inline-block)
 
 display 有一个特殊的值，它在内联和块之间提供了一个中间状态。这对于以下情况非常有用：您不希望一个项切换到新行，但希望它可以设定宽度和高度，并避免上面看到的重叠。
 
 一个元素使用 `display: inline-block`，实现我们需要的块级的部分效果：
 
-- 设置`width` 和`height` 属性会生效。
-- `padding`, `margin`, 以及`border` 会推开其他元素。
+- 设置 `width` 和 `height` 属性会生效。
+- `padding`，`margin`，以及 `border` 会推开其他元素。
 
 但是，它不会跳转到新行，如果显式添加 `width` 和 `height` 属性，它只会变得比其内容更大。
 
@@ -373,7 +373,7 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 **成因：**
 
 - 根节点：html
-- [父节点与正常文档流的子节点(非浮动)自动形成 BFC](./code/bfc-float.html)
+- [父节点与正常文档流的子节点 (非浮动) 自动形成 BFC](./code/bfc-float.html)
 - 被定义成块级的非块级节点：`display:inline-block/table-cell/table-caption/flex/inline-flex/grid/inline-grid`
 - 浮动节点：`float:left/right`
 - 绝对定位节点：`position:absolute/fixed`
@@ -381,9 +381,9 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 
 **场景：**
 
-- **自适应两栏布局：** 把侧边栏固定宽度且左浮动，对右侧内容触发 `BFC`，使得它的宽度自适应该行剩余宽度。
-- **清除内部浮动：** 浮动后面的元素显示声明 `BFC`。或者在浮动元素上套一层 `BFC`（也需要显示声明，本质也是 `margin` 合并），总之就是解决第二个成因。
-- **防止垂直 `margin` 合并：** 让 2 个元素不在同一个 `BFC` 中即可阻止垂直 `margin` 合并，给其中一个元素套一层 `BFC`即可（需要显示声明，直接块元素会出现 margin-top 传递现象）。
+- **自适应两栏布局：**把侧边栏固定宽度且左浮动，对右侧内容触发 `BFC`，使得它的宽度自适应该行剩余宽度。
+- **清除内部浮动：**浮动后面的元素显示声明 `BFC`。或者在浮动元素上套一层 `BFC` (也需要显示声明，本质也是 `margin` 合并)，总之就是解决第二个成因。
+- **防止垂直 `margin` 合并：**让 2 个元素不在同一个 `BFC` 中即可阻止垂直 `margin` 合并，给其中一个元素套一层 `BFC` 即可 (需要显示声明，直接块元素会出现 margin-top 传递现象)。
 
 **clear 属性：**
 
@@ -413,13 +413,13 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 
 **注意事项：**
 
-- **空白折叠：** [HTML 中换行编写行内元素，排版会出现 5px 空隙](./code/5px-gap.html)
-- **高矮不齐：** 行内元素统一以底边垂直对齐
-- **自动换行：** 排版若一行无法完成则换行接着排版
+- **空白折叠：**[HTML 中换行编写行内元素，排版会出现 5px 空隙](./code/5px-gap.html)
+- **高矮不齐：**行内元素统一以底边垂直对齐
+- **自动换行：**排版若一行无法完成则换行接着排版
 
 ## 使用百分数
 
-当使用百分数时，你需要清楚，它是什么东西的百分数。对于一个处于另外一个容器当中的盒子，如果你给予了子盒子一个百分数作为宽度，那么它指的是父容器宽度的百分数。使用百分比作为元素外边距（margin）或填充（padding）的单位时，**值是以包含块的内联尺寸进行计算的，也就是元素的水平宽度**。
+当使用百分数时，你需要清楚，它是什么东西的百分数。对于一个处于另外一个容器当中的盒子，如果你给予了子盒子一个百分数作为宽度，那么它指的是父容器宽度的百分数。使用百分比作为元素外边距 (margin) 或填充 (padding) 的单位时，**值是以包含块的内联尺寸进行计算的，也就是元素的水平宽度**。
 
 ## 其他基础知识
 
@@ -434,7 +434,7 @@ display 有一个特殊的值，它在内联和块之间提供了一个中间状
 
 ## flex
 
-> [`flex: 1` 到底代表什么?](https://zhuanlan.zhihu.com/p/136223806)
+> [`flex: 1` 到底代表什么？](https://zhuanlan.zhihu.com/p/136223806)
 
 ### 概述
 
@@ -518,9 +518,9 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 
 #### 在主轴上如何伸缩：flex 属性
 
-子容器是有弹性的（flex 即弹性），它们会自动填充剩余空间，**子容器的伸缩比例由 `flex` 属性确定。**
+子容器是有弹性的 (flex 即弹性)，它们会自动填充剩余空间，**子容器的伸缩比例由 `flex` 属性确定。**
 
-`flex` 的值可以是无单位数字（如：1, 2, 3），也可以是有单位数字（如：15px，30px，60px），还可以是 `none` 关键字。子容器会按照 `flex` 定义的尺寸比例自动伸缩，如果取值为 `none` 则不伸缩。
+`flex` 的值可以是无单位数字 (如：1，2，3)，也可以是有单位数字 (如：15px，30px，60px)，还可以是 `none` 关键字。子容器会按照 `flex` 定义的尺寸比例自动伸缩，如果取值为 `none` 则不伸缩。
 
 ![](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/css/flex_15.webp)
 
@@ -553,13 +553,13 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 
 **注意事项：**
 
-- 属性 `flex` 规定了弹性元素如何伸长或缩短以适应 `flex` 容器中的可用空间。这是一个简写属性，可以同时设置 `flex-grow`, `flex-shrink` 与 `flex-basis`。
+- 属性 `flex` 规定了弹性元素如何伸长或缩短以适应 `flex` 容器中的可用空间。这是一个简写属性，可以同时设置 `flex-grow`，`flex-shrink` 与 `flex-basis`。
   - 值 `auto` 相当于将属性设置为 `"flex: 1 1 auto"`
   - 默认值 `initial` 相当于将属性设置为 `"flex: 0 1 auto"`
   - 值 `none` 相当于将属性设置为 `"flex: 0 0 auto"`
 - `flex-grow` 初始值为 0。负值是不被允许的。
 - `flex-shrink` 元素**仅在默认宽度之和大于容器的时候才会发生收缩**，其收缩的大小是依据 `flex-shrink` 的值。**初始值为 1**。负值是不被允许的。
-- **如果任何 `flex` 元素的侧轴方向 `margin` 值设置为 `auto`，则会忽略 `align-self`（个体设置）。**
+- **如果任何 `flex` 元素的侧轴方向 `margin` 值设置为 `auto`，则会忽略 `align-self` (个体设置)。**
 
 ### 轴
 
@@ -655,7 +655,7 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 
 **双命名：**
 
-**由于网格中中间区域的网格线是两边格子公用的**，就像道路有两边，因此，我们起名字的时候可以起两个名称（使用空格分隔），分别表示两侧。例如：
+**由于网格中中间区域的网格线是两边格子公用的**，就像道路有两边，因此，我们起名字的时候可以起两个名称 (使用空格分隔)，分别表示两侧。例如：
 
 ```css
 .container {
@@ -690,7 +690,7 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 }
 ```
 
-`4` 列布局，后面 `3` 列宽度是 `grid` 容器宽度减去 `200px` 后的 `1/3` 大小,`1:1:1`，剩余空间三等分
+`4` 列布局，后面 `3` 列宽度是 `grid` 容器宽度减去 `200px` 后的 `1/3` 大小，`1:1:1`，剩余空间三等分
 
 **fr 和 auto 混用：**
 
@@ -701,9 +701,9 @@ flex 容器具有这样的特点：父容器可以统一设置子项的排列方
 }
 ```
 
-当设置 `fr` 和 `auto` 混用的时候，`auto` 的尺寸表现为“包裹”，为**内容宽度**。如果没有设置 `fr` 尺寸的网格，则表现为拉伸。
+当设置 `fr` 和 `auto` 混用的时候，`auto` 的尺寸表现为 “包裹”，为**内容宽度**。如果没有设置 `fr` 尺寸的网格，则表现为拉伸。
 
-**当`fr` 数值之和小于 `1` 时：**
+**当 `fr` 数值之和小于 `1` 时：**
 
 ```css
 .container {
@@ -814,4 +814,4 @@ CSS 函数指复杂类型或调用特殊处理的组件值类型。为单调的�
 
 ### Emoji as a Favicon
 
-> [How To Use an Emoji as a Favicon Easily](https://css-tricks.com/emoji-as-a-favicon/)
+> [How To Use an Emoji as a Favicon Easily](https://css-tricks.com/emoji-as-a-favicon/) -->

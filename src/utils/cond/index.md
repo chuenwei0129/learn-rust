@@ -33,7 +33,7 @@ function cond<T, R>(
 #### 示例
 
 ```ts
-import {cond} from localhost
+import {cond} from nautica
 
 const fn = cond<number, string>([
   [n => n < 10, n => `Less than 10: ${n}`],

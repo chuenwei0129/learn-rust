@@ -7,7 +7,7 @@ const EventSourceComponent = () => {
   useEffect(() => {
     const connect = () => {
       const eventSource = new EventSource(
-        `http://localhost:3000/events?lastEventId=${lastEventId}`,
+        `http://nautica:3000/events?lastEventId=${lastEventId}`,
       )
 
       eventSource.onmessage = (event) => {

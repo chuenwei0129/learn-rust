@@ -6,6 +6,7 @@ export default defineConfig({
     output: 'dist',
     // 打包 💼 忽略的文件
     ignores: [
+      'docs/**',
       'src/**/usage/**',
       'src/**/coverage/**',
       'src/components/**',
