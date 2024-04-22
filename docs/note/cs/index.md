@@ -1,7 +1,7 @@
 ---
 nav:
   second:
-    title: 计算机基础知识
+    title: 操作系统
     order: -999
 order: -999
 title: 这是什么？

@@ -17,10 +17,10 @@
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "lint:md": "zhlint \"./src/**/*.md\" && zhlint \"./docs/**/*.md\"",
+    "lint:md": "zhlint \"./src/**/*.md\" & zhlint \"./docs/**/*.md\" --fix",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "test": "pnpm dlx jest"
+    "test": "npx jest"
   },
   "commitlint": {
     "extends": [

@@ -364,7 +364,7 @@ http://socialnetwork.com/profile/update?email=newemail@example.com
 
 #### Cookie 的 SameSite 属性
 
-<embed src="./cookie.md#L50-L60"></embed>
+<embed src="./cookie.md#L66-L103"></embed>
 
 #### CSRF Token
 

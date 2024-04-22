@@ -2,7 +2,7 @@
 # 自定义二级导航
 nav:
   second:
-    title: 深入浅出 JavaScript
+    title: JavaScript
     order: 0
 # 菜单栏标题
 # title: 介绍

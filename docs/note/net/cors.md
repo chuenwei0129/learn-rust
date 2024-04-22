@@ -63,7 +63,7 @@ document.domain = 'site.com'
 
 尽管同源策略对于保障网站安全至关重要，但在现实开发中，经常需要进行跨域资源共享 (Cross-Origin Resource Sharing，CORS)。为了安全地实现这一需求，现代浏览器实现了 CORS 机制，允许网站的服务器通过设置特定的 HTTP 响应头来明确允许某些跨源请求。
 
-此外，还有其他技术和策略可以用于安全地绕过同源策略的限制，如使用 JSONP (仅限于 GET 请求)、WebSocket (WebSocket 没有跨源限制。)、通过服务器端代理跨源请求 (Webpack Dev Server 与 Nginx 反向代理) 等。
+此外，还有其他技术和策略可以用于安全地绕过同源策略的限制，如使用 JSONP (仅限于 GET 请求)、WebSocket (WebSocket 没有跨源限制)、通过服务器端代理跨源请求 (Webpack Dev Server 与 Nginx 反向代理) 等。
 
 ## [跨源资源共享 (CORS)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 
