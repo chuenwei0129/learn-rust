@@ -12,11 +12,9 @@ group:
 
 **官方网站**：您可以访问 [semver.org](https://semver.org/lang/zh-CN/) 了解 `SemVer` 规范的详细信息。
 
-版本号格式遵循 `major.minor.patch` 的结构，其中：
+[规范的 SemVer 格式](https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions)为：`<主版本号>.<次版本号>.<修订号>-<先行版本号>+<构建号>`。其中主版本号、次版本号和修订号必须是数字。先行版本号和构建号可以是字母、数字以及小数点 `.`，不过先行版本号是不可以有前导零的，构建号可以。
 
-- `major` 表示主版本号
-- `minor` 表示次版本号
-- `patch` 表示修订号
+我们常见的在 SemVer 前面加上 `~`、`^` 等符号，就表示这是一个 SemVer 范围。下面不严谨地讲一下，更严谨的说明可参阅 [node-semver 文档](https://github.com/npm/node-semver#advanced-range-syntax)。
 
 当我们更新了 `npm` 包的功能并需要发布新版本时，推荐的做法是使用 `npm` 命令行工具自动更新 `package.json` 文件中的版本号，避免手动更改导致的错误。以下是一些常用命令：
 
@@ -37,26 +35,26 @@ npm install semver
 这个工具包使我们能够执行以下操作：
 
 ```js
-const semver = require('semver');
+const semver = require('semver')
 
 // 比较版本号大小
-console.log(semver.gt('1.0.0', '0.9.0')); // 输出：true
-console.log(semver.lt('1.0.0', '2.0.0')); // 输出：true
+console.log(semver.gt('1.0.0', '0.9.0')) // 输出：true
+console.log(semver.lt('1.0.0', '2.0.0')) // 输出：true
 
 // 验证版本号是否符合某个范围
-console.log(semver.satisfies('1.0.0', '>=1.0.0')); // 输出：true
+console.log(semver.satisfies('1.0.0', '>=1.0.0')) // 输出：true
 
 // 将版本号字符串解析为对象
-console.log(semver.parse('1.0.0-beta')); 
+console.log(semver.parse('1.0.0-beta'))
 // 输出：{ version: '1.0.0-beta', major: 1, minor: 0, patch: 0, prerelease: ['beta'], build: [] }
 
 // 升级特定类型的版本号
-console.log(semver.inc('1.0.0', 'patch')); // 输出：1.0.1
-console.log(semver.inc('1.0.0', 'minor')); // 输出：1.1.0
-console.log(semver.inc('1.0.0', 'major')); // 输出：2.0.0
+console.log(semver.inc('1.0.0', 'patch')) // 输出：1.0.1
+console.log(semver.inc('1.0.0', 'minor')) // 输出：1.1.0
+console.log(semver.inc('1.0.0', 'major')) // 输出：2.0.0
 
 // 计算两个版本之间的差异类型
-console.log(semver.diff('1.0.0', '1.0.1')); // 输出：patch
+console.log(semver.diff('1.0.0', '1.0.1')) // 输出：patch
 ```
 
 这些是 `semver` 包的基础用法，更多高级功能和详细文档，请访问 [semver 文档](https://github.com/npm/node-semver)。
@@ -232,16 +230,16 @@ npm 利用 `package-lock.json` 文件中的信息，如包的 `integrity`、`ver
 1. **检查 `.npmrc` 文件的优先级顺序**：系统在处理 npm 配置时，会按照以下顺序考虑 `.npmrc` 文件的设置：首先是项目级别的 `.npmrc` 文件，其次是用户级别的，然后是全局级别的，最后是 npm 内置的配置文件。
 
 2. **检查项目中是否存在 `lock` 文件**：
-    - **若不存在 `lock` 文件**：
-        1. 系统将从 npm 远程仓库获取包的信息。
-        2. 根据 `package.json` 文件构建依赖树。在这个过程中，无论是直接依赖还是间接依赖，系统优先尝试将其放置在 `node_modules` 的根目录下。如果遇到相同的模块，系统会检查已存在的模块版本是否满足新模块的版本要求。如果满足，则跳过；如果不满足，则会在当前模块的 `node_modules` 目录下放置新的模块版本。
-        3. 接下来，系统会在缓存中查找每个依赖包：
-            - 如果**缓存不存在**，系统会从 npm 远程仓库下载包，并进行完整性校验。如果校验失败，系统会尝试重新下载；校验成功后，则将包复制到 npm 缓存目录，并按照依赖结构解压到 `node_modules` 目录中。
-            - 如果**缓存存在**，则直接将缓存的包按照依赖结构解压到 `node_modules` 目录中。
-        4. 最后，系统会生成 `lock` 文件，以锁定依赖版本。
-    - **若存在 `lock` 文件**：
-        1. 系统首先检查 `package.json` 中的依赖版本与 `package-lock.json` 中记录的版本是否存在冲突。
-        2. 如果没有冲突，系统将直接使用 `lock` 文件中的信息来查找缓存中的包，跳过获取包信息和构建依赖树的过程，后续操作与无 `lock` 文件时相同。
+   - **若不存在 `lock` 文件**：
+     1. 系统将从 npm 远程仓库获取包的信息。
+     2. 根据 `package.json` 文件构建依赖树。在这个过程中，无论是直接依赖还是间接依赖，系统优先尝试将其放置在 `node_modules` 的根目录下。如果遇到相同的模块，系统会检查已存在的模块版本是否满足新模块的版本要求。如果满足，则跳过；如果不满足，则会在当前模块的 `node_modules` 目录下放置新的模块版本。
+     3. 接下来，系统会在缓存中查找每个依赖包：
+        - 如果**缓存不存在**，系统会从 npm 远程仓库下载包，并进行完整性校验。如果校验失败，系统会尝试重新下载；校验成功后，则将包复制到 npm 缓存目录，并按照依赖结构解压到 `node_modules` 目录中。
+        - 如果**缓存存在**，则直接将缓存的包按照依赖结构解压到 `node_modules` 目录中。
+     4. 最后，系统会生成 `lock` 文件，以锁定依赖版本。
+   - **若存在 `lock` 文件**：
+     1. 系统首先检查 `package.json` 中的依赖版本与 `package-lock.json` 中记录的版本是否存在冲突。
+     2. 如果没有冲突，系统将直接使用 `lock` 文件中的信息来查找缓存中的包，跳过获取包信息和构建依赖树的过程，后续操作与无 `lock` 文件时相同。
 
 为了深入了解每个包的具体安装过程和细节，您可以执行命令 `npm install package --timing=true --loglevel=verbose`。这将启用详细日志记录，同时显示包安装的时间统计信息，帮助您更好地理解 npm 包的安装流程。
 

@@ -20,7 +20,7 @@
     "lint:md": "zhlint \"./src/**/*.md\" & zhlint \"./docs/**/*.md\" --fix",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "test": "npx jest"
+    "test": "pnpm dlx jest"
   },
   "commitlint": {
     "extends": [
@@ -84,5 +84,9 @@
   },
   "authors": [
     "chuenwei0129@gmail.com"
-  ]
+  ],
+  "json-comments": {
+    "tips": "请安装JSONComments插件为JSON文件提供注释功能, 详见: https://github.com/zhangfisher/json_comments_extension",
+    "package.json": {}
+  }
 }

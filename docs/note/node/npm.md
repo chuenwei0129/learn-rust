@@ -6,6 +6,20 @@ group:
   title: 基础知识
 ---
 
+## npm 是什么？
+
+npm 是一个具有多重语义的术语，它可以指以下几个含义：
+
+1. **Node.js 的包管理器**：npm 作为 Node.js 的包管理器，从 2009 年开始开源，旨在帮助 JavaScript 开发者轻松分享和管理代码包。开发者可以通过 npm 安装、更新和删除依赖包，以及管理项目的依赖关系。
+
+2. **npm 源站**：npm 还提供了一个公共的代码包集合服务，即 npm 源站。这个源站包含了 Node.js、前端应用、移动端应用等各种类型的代码包。开发者可以在 npm 源站上发布和共享自己的代码包，也可以从源站上下载和使用其他开发者分享的代码包。
+
+3. **npm CLI**：npm CLI 是 npm 的命令行界面工具，用于执行与包管理相关的操作。通过 npm CLI，开发者可以安装、卸载、更新和发布代码包，管理项目的依赖关系，运行脚本等。npm CLI 提供了一系列命令，使得开发者可以方便地进行包管理操作。
+
+对于 npm 源站来说，不同的公司也可以在内部部署私有化的 npm 源站，以满足公司内部的需求。这样可以确保公司内部的代码包能够得到有效管理和共享。
+
+对于 CLI 来说，它的主要作用就是从源站读取包信息、下载包内容，并按照某种规范排布目录，使得 Node.js 在使用的时候，能正常通过 `require()` 或是 `import` 来导入模块。不同的 CLI 排布规则不一样，但是在 Node.js 中能达到同样的效果。而排布规则的不同大多都是出于依赖体积、安装速度考虑的。
+
 ## Node.js 与 npm 的版本关系
 
 自 Node.js 10.0.0 版本起，Node.js 与 npm 的版本关系变得更加密切。每个新发布的 Node.js 主要版本通常会捆绑一个特定版本的 npm，以确保双方的兼容性。例如，Node.js 12.x 版本默认搭配 npm 6.x 版。尽管如此，由于 npm 更新的频率往往高于 Node.js，即便在同一主要版本系列中，也可能出现多个兼容的 npm 版本。为了维护 npm 的稳定运行，其版本需要与 Node.js 相匹配。
@@ -136,48 +150,58 @@ npm 配置可通过多种方式设定，具体取决于以下来源的**优先�
 
 1. **命令行参数** - 直接在命令行中设置，如：
 
-    ```sh
-    npm run serve -- --params=123
-    ```
+   ```sh
+   npm run serve -- --params=123
+   ```
 
-    此命令会设置 `params` 的值为 `123`，覆盖其他来源的同名配置。可通过 `process.env.npm_config_params` 访问。
+   此命令会设置 `params` 的值为 `123`，覆盖其他来源的同名配置。可通过 `process.env.npm_config_params` 访问。
 
 2. **环境变量** - 环境变量中的 `npm_config_` 前缀将识别为 npm 配置。
 
-    ```sh
-    export npm_config_package_lock=false
-    ```
+   ```sh
+   export npm_config_package_lock=false
+   ```
 
-    执行 `npm install` 时，npm 不会生成 package-lock.json 文件，因为它采用了环境变量的配置。
+   执行 `npm install` 时，npm 不会生成 package-lock.json 文件，因为它采用了环境变量的配置。
 
-    查看和删除环境变量的命令分别是：
+   查看和删除环境变量的命令分别是：
 
-    ```sh
-    echo $NODE_ENV
-    unset NODE_ENV
-    ```
+   ```sh
+   echo $NODE_ENV
+   unset NODE_ENV
+   ```
 
 3. **npmrc 文件** - 编辑这些文件以直接修改配置，它们的访问优先级如下：
 
-    - **项目级** `.npmrc`：仅在当前项目中有效。
-    - **用户级** `.npmrc`：位于 `~/.npmrc` 或通过 `npm config get userconfig` 查看。
-    - **全局级** `.npmrc`：位于 `$PREFIX/etc/npmrc` 或通过 `npm config get globalconfig` 查看。
-    - **npm 内置** `.npmrc`：不可更改的默认配置文件。
+   - **项目级** `.npmrc`：仅在当前项目中有效。
+   - **用户级** `.npmrc`：位于 `~/.npmrc` 或通过 `npm config get userconfig` 查看。
+   - **全局级** `.npmrc`：位于 `$PREFIX/etc/npmrc` 或通过 `npm config get globalconfig` 查看。
+   - **npm 内置** `.npmrc`：不可更改的默认配置文件。
 
 4. **npm config** - 默认配置参数，可通过以下命令查看和修改：
 
-    ```sh
-    # 设置配置项
-    npm config set <key> <value>
-    # 获取配置项
-    npm config get <key>
-    # 删除配置项（无法删除项目级配置）
-    npm config delete <key>
-    # 查看所有配置项，包括默认配置
-    npm config list
-    # 在编辑器中编辑配置文件
-    npm config edit
-    ```
+   ```sh
+   # 设置配置项
+   npm config set <key> <value>
+   # 获取配置项
+   npm config get <key>
+   # 删除配置项（无法删除项目级配置）
+   npm config delete <key>
+   # 查看所有配置项，包括默认配置
+   npm config list
+   # 在编辑器中编辑配置文件
+   npm config edit
+   ```
+
+### `.npmrc` 文件
+
+`.npmrc` 文件是 npm 的配置文件，它包含了一些 npm 的配置信息，比如代理、镜像、命令别名等。通过修改 `.npmrc` 文件，可以更改 npm 的默认行为。
+
+全局中，`.npmrc` 文件通常位于用户主目录下 (Linux 和 Mac 是 `~/.npmrc`)。
+
+也可以在项目根目录下创建一个 `.npmrc` 文件，此时该项目下执行 npm 将会复用此份配置。
+
+更多配置项可以参考 [npm 的官方文档](https://docs.npmjs.com/cli/v10/configuring-npm/npmrc)。
 
 ### 镜像源管理
 
@@ -324,43 +348,43 @@ package.json 的 `scripts` 字段，可以用于指定脚本命令，供 npm 直
 2. **可配置参数**：格式是加上两个连词线 (--)
 3. **内部变量**：
 
-    ```json
-    {
-      "name": "npm_test",
-      "version": "1.0.0",
-      "config": {
-        "reporter": "xunit"
-      },
-      "scripts":{
-        "bundle": "mkdir -p build/$npm_package_version/",
-        // $npm_package_version 读的是 "version" 的值，同理 $npm_package_name 读的是 "name" 的值
-        "test": "mocha test/ --reporter $npm_package_config_reporter"
-        // $npm_package_config_reporter 读的是 "config" 里的 "reporter"
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "npm_test",
+     "version": "1.0.0",
+     "config": {
+       "reporter": "xunit"
+     },
+     "scripts": {
+       "bundle": "mkdir -p build/$npm_package_version/",
+       // $npm_package_version 读的是 "version" 的值，同理 $npm_package_name 读的是 "name" 的值
+       "test": "mocha test/ --reporter $npm_package_config_reporter"
+       // $npm_package_config_reporter 读的是 "config" 里的 "reporter"
+     }
+   }
+   ```
 
 4. **`pre-` 和 `post-` 两个钩子**：
 
-    当你在 package.json 中定义了一个脚本时，比如 build，你可以同时定义 prebuild 和 postbuild 脚本。npm 会在执行 `npm run build` 命令时，自动先查找并执行 prebuild 脚本，然后执行 build 脚本，最后执行 postbuild 脚本。
+   当你在 package.json 中定义了一个脚本时，比如 build，你可以同时定义 prebuild 和 postbuild 脚本。npm 会在执行 `npm run build` 命令时，自动先查找并执行 prebuild 脚本，然后执行 build 脚本，最后执行 postbuild 脚本。
 
-    假设你的 package.json 文件中有如下脚本定义：
+   假设你的 package.json 文件中有如下脚本定义：
 
-    ```json
-    "scripts": {
-      "prebuild": "echo Preparing for build...",
-      "build": "echo Building the project...",
-      "postbuild": "echo Build completed."
-      }
-    ```
+   ```json
+   "scripts": {
+     "prebuild": "echo Preparing for build...",
+     "build": "echo Building the project...",
+     "postbuild": "echo Build completed."
+     }
+   ```
 
-    当你运行 `npm run build` 命令时，输出将会是：
+   当你运行 `npm run build` 命令时，输出将会是：
 
-    ```sh
-    > Preparing for build...
-    > Building the project...
-    > Build completed.
-    ```
+   ```sh
+   > Preparing for build...
+   > Building the project...
+   > Build completed.
+   ```
 
 5. **串行执行**：`npm run script1 && npm run script2`
 
@@ -384,6 +408,8 @@ npm publish
 
 使用 `npm link` 能够避免重复且繁琐的打包发布操作，给开发调试带来便捷，而且使用方法简单。
 
+![20240425171009](https://raw.githubusercontent.com/chuenwei0129/my-picgo-repo/master/me/20240425171009.png)
+
 假设你维护的下游业务项目叫做 app，上游的依赖叫做 dep，那么要想做到 **“dep 一改动，app 就能同步更新”**，只需要这样：
 
 ```sh
@@ -406,15 +432,28 @@ npm unlink dep
 npm unlink dep
 ```
 
-### `.npmrc` 文件
+#### npm exec
 
-`.npmrc` 文件是 npm 的配置文件，它包含了一些 npm 的配置信息，比如代理、镜像、命令别名等。通过修改 `.npmrc` 文件，可以更改 npm 的默认行为。
+`npm exec`（或者在一些 npm 版本中作为 `npx` 出现）是一个 npm 命令，用于在 npm 包管理的环境中执行任意命令。这个命令的一个常见用途是执行安装在项目本地或全局的 npm 包中的可执行文件，而不需要全局安装这些包或者直接引用它们的路径。这使得在不同项目之间共享和使用开发工具变得更加简单和一致。
 
-全局中，`.npmrc` 文件通常位于用户主目录下 (Linux 和 Mac 是 `~/.npmrc`)。
+##### 基本用法
 
-也可以在项目根目录下创建一个 `.npmrc` 文件，此时该项目下执行 npm 将会复用此份配置。
+- **执行本地安装的包**：如果你在项目中本地安装了一个包（例如，`eslint`），你可以使用 `npm exec eslint` 来执行它，而不需要知道它的具体安装路径。
+- **无需事先安装直接执行包**：`npm exec` 还允许你执行尚未安装的 npm 包。例如，`npm exec --package=eslint -- eslint .` 会临时安装 `eslint`（如果尚未安装）并在当前目录执行它。
 
-更多配置项可以参考 [npm 的官方文档](https://docs.npmjs.com/cli/v10/configuring-npm/npmrc)。
+##### 选项和参数
+
+- `-w` 或 `--workspace`：指定要在哪个工作空间执行命令（仅在使用 npm workspaces 时适用）。
+- `--`：用于明确分隔 `npm exec` 命令的选项和要执行的实际命令及其参数。
+- `--package`：允许指定要临时安装并执行的包，这对于一次性运行某个命令非常有用，无需永久添加到项目依赖中。
+
+##### 示例
+
+- **执行本地安装的命令**：`npm exec tsc`（假设 `tsc`，即 TypeScript 编译器，已作为本地依赖安装）。
+- **指定工作空间执行命令**：`npm exec -w some-workspace -- some-command`（在名为 `some-workspace` 的工作空间中执行 `some-command`）。
+- **临时安装并执行包**：`npm exec --package=cowsay -- cowsay "Hello, World!"`（临时安装 `cowsay` 并执行它）。
+
+`npm exec` 命令提供了一种便捷的方式来执行 npm 包中的命令，无论它们是全局安装的、项目本地安装的，还是即时下载执行的。这在开发过程中提高了效率，尤其是在处理多个项目和依赖时。
 
 ## 什么是 npx？
 

@@ -18,14 +18,14 @@ group:
 2. 初始搭建项目时，运行 `npm install` 来安装依赖，并提交 `package.json` 与 `package-lock.json` 文件。`node_modules` 目录无需提交。
 3. 作为项目新成员，在 `checkout/clone` 项目后，执行 `npm install` 以安装所需依赖。
 4. 需要升级依赖时：
-    - 对于小版本更新，使用 `npm update`。
-    - 对于大版本更新，使用 `npm install <package>@<version>`。
-    - 可以直接在 `package.json` 中修改版本号，然后运行 `npm install`。
-    - 升级并测试无误后，提交新的 `package.json` 和 `package-lock.json` 文件。
+   - 对于小版本更新，使用 `npm update`。
+   - 对于大版本更新，使用 `npm install <package>@<version>`。
+   - 可以直接在 `package.json` 中修改版本号，然后运行 `npm install`。
+   - 升级并测试无误后，提交新的 `package.json` 和 `package-lock.json` 文件。
 5. 降级依赖时，使用 `npm install <package>@<version>`，确认无误后提交更新的文件。
 6. 移除依赖时：
-    - 执行 `npm uninstall <package>`，验证后提交更新的 `package.json` 和 `package-lock.json`。
-    - 或直接从 `package.json` 中删除依赖，然后运行 `npm install`，验证后提交更新。
+   - 执行 `npm uninstall <package>`，验证后提交更新的 `package.json` 和 `package-lock.json`。
+   - 或直接从 `package.json` 中删除依赖，然后运行 `npm install`，验证后提交更新。
 7. 提交更新的 `package.json` 和 `package-lock.json` 后，通知团队成员以同步更新依赖。
 8. 避免手动修改 `package-lock.json` 文件，以免引发问题。
 9. 若 `package-lock.json` 出现问题，建议删除本地文件，从远端获取无冲突的版本，再执行 `npm install`。
@@ -97,62 +97,66 @@ function verifyPackageTree() {
     'jest',
     'webpack',
     'webpack-dev-server',
-  ];
+  ]
 
   // 生成用于匹配语义化版本号的正则表达式
   const getSemverRegex = () =>
-    /\bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?\b/gi;
+    /\bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?\b/gi
 
   // 读取当前包的 package.json 文件
-  const ownPackageJson = require('../../package.json');
-  const expectedVersionsByDep = {};
+  const ownPackageJson = require('../../package.json')
+  const expectedVersionsByDep = {}
 
   // 遍历依赖项，确保每个依赖在 package.json 中都有对应的、固定的版本号
-  depsToCheck.forEach(dep => {
-    const expectedVersion = ownPackageJson.dependencies[dep];
+  depsToCheck.forEach((dep) => {
+    const expectedVersion = ownPackageJson.dependencies[dep]
     if (!expectedVersion) {
-      throw new Error('This dependency list is outdated, fix it.');
+      throw new Error('This dependency list is outdated, fix it.')
     }
     if (!getSemverRegex().test(expectedVersion)) {
       throw new Error(
-        `The ${dep} package should be pinned, instead got version ${expectedVersion}.`
-      );
+        `The ${dep} package should be pinned, instead got version ${expectedVersion}.`,
+      )
     }
-    expectedVersionsByDep[dep] = expectedVersion;
-  });
+    expectedVersionsByDep[dep] = expectedVersion
+  })
 
-  let currentDir = __dirname;
+  let currentDir = __dirname
 
   // 循环向上遍历目录，直到到达文件系统的根目录
   while (true) {
-    const previousDir = currentDir;
-    currentDir = path.resolve(currentDir, '..');
+    const previousDir = currentDir
+    currentDir = path.resolve(currentDir, '..')
     if (currentDir === previousDir) {
-      break; // 已到达根目录
+      break // 已到达根目录
     }
-    const maybeNodeModules = path.resolve(currentDir, 'node_modules');
+    const maybeNodeModules = path.resolve(currentDir, 'node_modules')
     if (!fs.existsSync(maybeNodeModules)) {
-      continue;
+      continue
     }
 
     // 对每个依赖项，在 node_modules 中检查实际版本是否符合预期
-    depsToCheck.forEach(dep => {
-      const maybeDep = path.resolve(maybeNodeModules, dep);
+    depsToCheck.forEach((dep) => {
+      const maybeDep = path.resolve(maybeNodeModules, dep)
       if (!fs.existsSync(maybeDep)) {
-        return;
+        return
       }
-      const maybeDepPackageJson = path.resolve(maybeDep, 'package.json');
+      const maybeDepPackageJson = path.resolve(maybeDep, 'package.json')
       if (!fs.existsSync(maybeDepPackageJson)) {
-        return;
+        return
       }
-      const depPackageJson = JSON.parse(fs.readFileSync(maybeDepPackageJson, 'utf8'));
-      const expectedVersion = expectedVersionsByDep[dep];
+      const depPackageJson = JSON.parse(
+        fs.readFileSync(maybeDepPackageJson, 'utf8'),
+      )
+      const expectedVersion = expectedVersionsByDep[dep]
       // 使用 semver 库检查版本是否满足要求
       if (!semver.satisfies(depPackageJson.version, expectedVersion)) {
-        console.error(`The installed version of ${dep} (${depPackageJson.version}) does not satisfy the expected version range (${expectedVersion}). Please update your dependencies.`);
-        process.exit(1); // 版本不匹配时，终止进程
+        console.error(
+          `The installed version of ${dep} (${depPackageJson.version}) does not satisfy the expected version range (${expectedVersion}). Please update your dependencies.`,
+        )
+        process.exit(1) // 版本不匹配时，终止进程
       }
-    });
+    })
   }
 }
 ```
@@ -254,3 +258,21 @@ https://juejin.cn/post/7159169143323754503
 ## 如何写一个全面兼容的 npm 库
 
 https://innei.in/posts/tech/write-a-universally-compatible-js-library-with-fully-types
+
+## npm 执行命令传递参数时，为何需要双横线？
+
+在 `npm` 命令行工具中，当执行一个脚本命令 (如 `npm start`) 时，`npm` 本身也接受一些参数。这些参数用于控制 `npm` 的行为，如 `--silent`、`--verbose` 等。这就带来了一个问题：如果你想向 `npm` 脚本中指定的命令传递参数，如何区分这些参数是给 `npm` 本身的，还是要传递给 `npm` 脚本中指定的命令？
+
+为了解决这个问题，`npm` 使用了双横线 `--` 作为一个特殊的标记，来区分参数是给 `npm` 还是给脚本中的命令。当 `npm` 在命令行中遇到 `--` 时，它会停止解析自己的参数，而把 `--` 后面的所有内容作为参数传递给脚本中指定的命令。这样，你就可以在 `npm` 脚本中使用命令行参数了，而不会与 `npm` 的参数混淆。
+
+例如：
+
+```json
+{
+  "start": "webpack"
+}
+```
+
+如果你执行 `npm start -- --config my-config.js`，`npm` 会执行 `start` 脚本中指定的 `webpack` 命令，并将 `--config my-config.js` 作为参数传递给它。这里的 `--` 告诉 `npm`，`--config my-config.js` 不是 `npm` 的参数，而是要传递给 `webpack` 命令的。
+
+这种设计允许 `npm` 脚本非常灵活地接受和处理命令行参数，同时避免了参数解析上的混淆。

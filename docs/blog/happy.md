@@ -53,3 +53,5 @@ learn(2)； // 学习 2 小时
 我们可以认为，在 App 中，我们有一个 isDarkMode 状态，我们需要将其在多个子节点间共享，因此，我们在根节点中定义了这个状态，然后将其以 props 的形式传入每个子节点。
 
 我们也可以认为，在 SomeChildText 中声明了一个 isDarkMode 状态，而在 SomeChildDiv 中，也声明了一个 isDarkMode 状态。只不过，每当 SomeChildText 中的 isDarkMode 状态发生改变时，SomeChildDiv 中的 isDarkMode 状态就随之变化。
+
+说好不为技术控，我熬夜见你熬夜。
