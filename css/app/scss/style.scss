@@ -1,0 +1,74 @@
+// 声明变量
+$global-color: #ff0000;
+$item-prefix: 'item-';
+$font-size: 50px / 2;
+
+@use 'sass:math';
+
+// 使用变量
+h1 {
+  $local-color: #8c8157 !global;
+  color: $global-color;
+  background: #ccc;
+  height: math.div(100px, 2);
+}
+
+// 使用插值语法：#{}
+:where(.#{$item-prefix}1, .#{$item-prefix}2) {
+  font-style: italic;
+  color: $local-color;
+  font-size: $font-size;
+}
+
+$transparent-local-color: rgba($local-color, 0.5);
+
+##{$item-prefix}3 {
+  color: $transparent-local-color;
+}
+
+$hello: 'hello';
+$world: 'world';
+$hello-world: $hello + '-' + $world;
+$world-hello: '#{$world}-#{$hello}';
+
+.#{$world-hello} {
+  color: $local-color;
+}
+
+.#{$hello-world} {
+  color: $global-color;
+}
+
+.nesting {
+  height: 100px;
+  background-color: aliceblue;
+  &:hover {
+    background-color: beige;
+    &::after {
+      // 行级盒子，相当于 .nesting 子元素
+      content: '❤️';
+      color: red;
+    }
+  }
+}
+
+@for $i from 1 through 3 {
+  .box-#{$i} {
+    width: 50px * $i;
+    height: 50px * $i;
+    background-color: rgb(172, 158, 184);
+    margin-top: 20px;
+  }
+}
+
+$colors: (
+  red: #f00,
+  yellow: #0f0,
+  blue: #00f,
+);
+
+@each $color, $value in $colors {
+  .box-#{$color} {
+    color: $value;
+  }
+}
