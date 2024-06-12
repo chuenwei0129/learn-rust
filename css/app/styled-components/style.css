@@ -1,0 +1,16 @@
+/* styles.css */
+.button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+:root {
+  --primary-color: #007bff;
+}
+
+.red-bg {
+  background-color: red;
+}
