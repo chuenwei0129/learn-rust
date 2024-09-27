@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "expo-test",
+    "slug": "expo-test",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#25292e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chuenwei0129.expotest"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.chuenwei0129.expotest"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a51a074f-8732-42f1-831e-0445626e1352"
+      }
+    },
+    "owner": "chuenwei0129"
+  }
+}

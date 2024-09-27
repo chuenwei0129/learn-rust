@@ -1,0 +1,42 @@
+{
+  "name": "expo-test",
+  "version": "1.0.0",
+  "main": "expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~3.2.3",
+    "@expo/vector-icons": "^14.0.3",
+    "dom-to-image": "^2.6.0",
+    "expo": "~51.0.28",
+    "expo-image-picker": "~15.0.7",
+    "expo-media-library": "~16.0.5",
+    "expo-status-bar": "~1.12.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-gesture-handler": "~2.16.1",
+    "react-native-reanimated": "~3.10.1",
+    "react-native-view-shot": "3.8.0",
+    "react-native-web": "~0.19.10",
+    "expo-dev-client": "~4.0.26"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true,
+  "json-comments": {
+    "tips": "请安装JSONComments插件为JSON文件提供注释功能, 详见: https://github.com/zhangfisher/json_comments_extension",
+    "app.json": {
+      "expo.splash": "启动屏幕是在应用内容有机会加载之前可见的屏幕。一旦应用可供使用且内容可供显示，它就会隐藏。"
+    },
+    "eas.json": {
+      "build.ios-simulator": "添加一个名为 ios-simulator 的新构建配置文件，其属性为 ios.simulator 属性。",
+      "build.ios-simulator.extends": "对于开发版本，必须在配置文件中定义 developmentClient 和 distribution 属性。为了避免冗余，我们可以扩展 development 配置文件属性"
+    }
+  }
+}

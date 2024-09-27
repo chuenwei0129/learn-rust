@@ -1,0 +1,36 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>, Chromium
+    <span id="chrome-version"></span>, and Electron
+    <span id="electron-version"></span>.
+    <button class="btn1">click me!</button>
+    <hr />
+    <input type="text" />
+    <button class="btn2">将输入框的内容写入 out 下的 test.md 文件中</button>
+    <button class="btn3">读取写入 out 下的 test.md 文件的最新内容</button>
+    <hr />
+    Title: <input id="title" />
+    <button id="btn4" type="button">Set</button>
+    <hr />
+    <button type="button" id="btn5">Open a File</button>
+    File path: <strong id="filePath"></strong>
+    <hr />
+    Current value: <strong id="counter">0</strong>
+    <hr />
+    <textarea></textarea>
+    <script src="./index.js"></script>
+  </body>
+</html>
