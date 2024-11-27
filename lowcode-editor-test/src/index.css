@@ -1,0 +1,4 @@
+/* 引入 tailwind 基础样式 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

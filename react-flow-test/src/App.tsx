@@ -2,152 +2,111 @@ import {
   addEdge,
   Background,
   BackgroundVariant,
-  BaseEdge,
   Connection,
   Controls,
-  EdgeLabelRenderer,
-  EdgeProps,
-  getBezierPath,
-  getStraightPath,
-  Handle,
+  Edge,
   MiniMap,
-  OnConnect,
-  Position,
+  Node,
+  Panel,
   ReactFlow,
   useEdgesState,
   useNodesState,
-  useReactFlow,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
+import { OscillatorNode } from './components/OscillatorNode'
+import { VolumeNode } from './components/VolumeNode'
+import { OutputNode } from './components/OutputNode'
+import { connect, createAudioNode } from './Audio'
 
-const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, type: 'red', data: { label: '1' } },
-  { id: '2', position: { x: 200, y: 300 }, type: 'blue', data: { label: '2' } },
+const initialNodes: Node[] = [
+  {
+    id: 'a',
+    type: 'osc',
+    data: { frequency: 220, type: 'square' },
+    position: { x: 200, y: 0 },
+  },
+  {
+    id: 'b',
+    type: 'volume',
+    data: { gain: 0.5 },
+    position: { x: 150, y: 250 },
+  },
+  {
+    id: 'c',
+    type: 'out',
+    data: {},
+    position: { x: 350, y: 400 },
+  },
 ]
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2', type: 'custom' }]
 
-interface NodePorps {
-  data: {
-    label: string
-  }
-}
-function RedNode({ data }: NodePorps) {
-  return (
-    <div
-      style={{
-        background: 'red',
-        width: '100px',
-        height: '100px',
-        textAlign: 'center',
-      }}
-    >
-      <Handle type="source" position={Position.Right} />
-      <Handle type="target" position={Position.Bottom} />
+const initialEdges: Edge[] = []
 
-      <div>{data.label}</div>
-    </div>
-  )
-}
-
-function BlueNode({ data }: NodePorps) {
-  return (
-    <div
-      style={{
-        background: 'blue',
-        width: '50px',
-        height: '50px',
-        textAlign: 'center',
-        color: '#fff',
-      }}
-    >
-      <Handle type="source" position={Position.Bottom} />
-      <Handle type="target" position={Position.Top} />
-
-      <div>{data.label}</div>
-    </div>
-  )
-}
-
-function CustomEdge({
-  id,
-  sourceX,
-  sourceY,
-  targetX,
-  targetY,
-  sourcePosition,
-  targetPosition,
-  style = {},
-  markerEnd,
-}: EdgeProps) {
-  const { setEdges } = useReactFlow()
-
-  const [edgePath, labelX, labelY] = getBezierPath({
-    sourceX,
-    sourceY,
-    sourcePosition,
-    targetX,
-    targetY,
-    targetPosition,
-  })
-
-  const onEdgeClick = () => {
-    setEdges((edges) => edges.filter((edge) => edge.id !== id))
-  }
-
-  return (
-    <>
-      <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} />
-      <EdgeLabelRenderer>
-        <div
-          style={{
-            position: 'absolute',
-            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
-            fontSize: 12,
-            // EdgeLabelRenderer 里的组件默认不处理鼠标事件，如果要处理就要声明 pointerEvents: all
-            pointerEvents: 'all',
-          }}
-        >
-          <button onClick={onEdgeClick}>×</button>
-        </div>
-      </EdgeLabelRenderer>
-    </>
-  )
+const nodeTypes = {
+  osc: OscillatorNode,
+  volume: VolumeNode,
+  out: OutputNode,
 }
 
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
 
+  const proOptions = { hideAttribution: true }
+
   const onConnect = (params: Connection) => {
+    connect(params.source, params.target)
     setEdges((eds) => addEdge(params, eds))
   }
 
+  function addOscNode() {
+    const id = Math.random().toString().slice(2, 8)
+    const position = { x: 0, y: 0 }
+    const type = 'osc'
+    const data = { frequency: 400, type: 'sine' }
+
+    setNodes([...nodes, { id, type, data, position }])
+    createAudioNode(id, type, data)
+  }
+
+  function addVolumeNode() {
+    const id = Math.random().toString().slice(2, 8)
+    const data = { gain: 0.5 }
+    const position = { x: 0, y: 0 }
+    const type = 'volume'
+
+    setNodes([...nodes, { id, type, data, position }])
+    createAudioNode(id, type, data)
+  }
+
   return (
-    <div
-      style={{
-        width: '800px',
-        height: '500px',
-        border: '1px solid #000',
-        margin: '50px auto',
-      }}
-    >
+    <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        nodeTypes={{
-          red: RedNode,
-          blue: BlueNode,
-        }}
-        edgeTypes={{
-          custom: CustomEdge,
-        }}
+        nodeTypes={nodeTypes}
+        proOptions={proOptions}
+        fitView
       >
         <Controls />
-        <MiniMap zoomable />
+        <MiniMap />
         <Background variant={BackgroundVariant.Lines} />
+        <Panel className={'space-x-4'} position="top-right">
+          <button
+            className={'p-[4px] rounded bg-white shadow'}
+            onClick={addOscNode}
+          >
+            添加振荡器节点
+          </button>
+          <button
+            className={'p-[4px] rounded bg-white shadow'}
+            onClick={addVolumeNode}
+          >
+            添加音量节点
+          </button>
+        </Panel>
       </ReactFlow>
     </div>
   )
